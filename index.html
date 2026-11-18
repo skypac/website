@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   /* SkyPac brand guide: navy, gold, cream, teal. One night-sky world, so the page stays single-theme by choice. */
@@ -250,12 +250,40 @@ a.src:hover{border-color:var(--cream)}
   .index tbody td{font-size:.95rem}
 }
 
-/* testimonials */
-.slots{display:grid;gap:clamp(36px,5vw,84px);grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
-.slots figure{display:grid;gap:16px;align-content:start}
-.slots svg{width:26px;height:28px;color:var(--gold)}
-.slots blockquote{margin:0;font-style:italic;font-size:1.25rem;line-height:1.45;color:rgba(235,231,215,.62)}
-.slots figcaption{font-size:.92rem;color:rgba(235,231,215,.62)}
+/* testimonials: a row that runs off the right edge of the page and is swiped, or stepped with two buttons. Only
+   words Cy has approved are in it; with none yet the row is not shown and the invitation stands alone. A long one is
+   cut at six lines with a way to read the rest (.ready is set by the script, so nothing is cut without it). */
+.said-wrap{display:grid;gap:28px;min-width:0}
+.said{--gap:clamp(44px,6vw,104px);display:flex;gap:var(--gap);min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;
+  margin:0 calc(-1*max(var(--gut),env(safe-area-inset-right))) 0 calc(-1*max(var(--gut),env(safe-area-inset-left)));
+  padding:6px max(var(--gut),env(safe-area-inset-right)) 6px max(var(--gut),env(safe-area-inset-left));
+  scroll-padding-left:max(var(--gut),env(safe-area-inset-left))}
+.said::-webkit-scrollbar{display:none}
+.said:focus-visible{outline-offset:-3px}
+.said figure{flex:0 0 82%;scroll-snap-align:start;display:grid;gap:16px;align-content:start}
+/* whatever the width, the next one shows at the right edge, cut off, so the row reads as something to move */
+@media (min-width:700px){.said figure{flex-basis:calc((100% - var(--gap))/2.25)}}
+@media (min-width:1200px){.said figure{flex-basis:min(calc((100% - 2*var(--gap))/3.25),34rem)}}
+.said svg{width:26px;height:28px;color:var(--gold)}
+.said blockquote,.reader blockquote{margin:0;font-style:italic}
+.said blockquote{font-size:clamp(1.15rem,1.5vw,1.3rem);line-height:1.5}
+.said blockquote p+p,.reader blockquote p+p{margin-top:.7em}
+.words.ready .said blockquote{max-height:9em;overflow:hidden}
+.words.ready .said .long blockquote{-webkit-mask-image:linear-gradient(#000 58%,transparent);mask-image:linear-gradient(#000 58%,transparent)}
+.said figcaption,.reader figcaption{display:grid;gap:2px;font-size:.92rem}
+.said figcaption b,.reader figcaption b{font-weight:400}
+.said figcaption span,.reader figcaption span{color:rgba(235,231,215,.7)}
+.said .btn{justify-self:start;font-size:.92rem}
+.said-nav{display:flex;gap:26px;font-weight:400}
+.said-nav .btn:disabled{opacity:.38;cursor:default;border-color:transparent}
+.tell{display:grid;gap:18px;justify-items:start}
+.tell form,.tell .draft{margin-top:10px;justify-self:stretch}
+/* a long testimonial, opened whole */
+.reader{position:fixed;inset:0;z-index:70;background:var(--ink);display:grid;grid-template-rows:minmax(0,1fr) auto}
+.reader figure{overflow:auto;display:grid;gap:22px;align-content:safe center;justify-items:start;padding:clamp(72px,12vh,130px) max(var(--gut),env(safe-area-inset-right)) 28px max(var(--gut),env(safe-area-inset-left))}
+.reader svg{width:34px;height:37px;color:var(--gold)}
+.reader blockquote{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.55;max-width:36em}
+.reader .bar{display:flex;justify-content:flex-end;padding:16px max(var(--gut),env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) max(var(--gut),env(safe-area-inset-left));font-weight:400}
 
 /* contact */
 .reach{display:grid;gap:clamp(40px,6vw,96px);grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start;margin-top:clamp(8px,2vh,24px)}
@@ -572,6 +600,42 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
         <h3>How we work</h3>
         <p>Four tenets run every job. Together they spell CARE.</p>
         <p class="jumps"><a class="link" href="#about">Read about SkyPac</a><a class="link" href="#approach">See our approach</a><a class="link" href="#science">See our science and technology</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="band ink words" id="words">
+    <h2>In their words</h2>
+    <div class="said-wrap" id="saidWrap" hidden>
+      <div class="said" id="said" tabindex="0" role="region" aria-label="What clients and partners say about SkyPac">
+      </div>
+      <p class="said-nav" id="saidNav" hidden><button class="btn" id="saidPrev" type="button">Previous</button><button class="btn" id="saidNext" type="button">Next</button></p>
+    </div>
+    <div class="tell">
+      <p class="lead">Built or worked with SkyPac? Tell us how it went.</p>
+      <p class="quiet">We read every testimonial before it appears here.</p>
+      <button class="btn" id="tellOpen" type="button" aria-expanded="false" aria-controls="tell">Add your testimonial</button>
+      <form id="tell" novalidate hidden>
+        <label for="t-name">Your name<input id="t-name" name="name" type="text" autocomplete="name" required></label>
+        <label for="t-role">Your project, company or role<input id="t-role" name="role" type="text" autocomplete="off"></label>
+        <label for="t-words">Your testimonial<textarea id="t-words" name="words" rows="5" maxlength="3000" required></textarea></label>
+        <label for="t-reach">Email or phone, so SkyPac can confirm it with you. Not published.<input id="t-reach" name="reach" type="text" autocomplete="email" required></label>
+        <input id="t-check" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+        <p class="quiet" id="tellHelp" aria-live="polite">Sending it means SkyPac may publish your words with your name.</p>
+        <button class="btn" type="submit">Send to SkyPac</button>
+      </form>
+      <div class="draft" id="tellDone" hidden tabindex="-1">
+        <p>Thank you. Your testimonial is with SkyPac, and it will appear here once it has been read.</p>
+      </div>
+      <div class="draft" id="tellDraft" hidden tabindex="-1">
+        <p>That could not be sent from this page, so it is drafted here as an email instead. Nothing has been sent yet.</p>
+        <pre id="tellText"></pre>
+        <div class="acts">
+          <a class="link" id="tellMail" href="mailto:cy@skypaccontracting.com">Open in your email app</a>
+          <button class="btn" id="tellCopy" type="button">Copy the message</button>
+          <button class="btn" id="tellEdit" type="button">Edit</button>
+        </div>
+        <p class="quiet">If your email app does not open, copy the message and send it to cy@skypaccontracting.com.</p>
       </div>
     </div>
   </div>
@@ -1071,11 +1135,16 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   </div>
 </div>
 
+<div class="reader" id="reader" role="dialog" aria-modal="true" aria-label="Testimonial" hidden>
+  <figure><svg viewBox="0 0 49 53" aria-hidden="true"><use href="#crescent"/></svg><blockquote id="readerText"></blockquote><figcaption id="readerBy"></figcaption></figure>
+  <div class="bar"><button class="btn" id="readerClose" type="button">Close</button></div>
+</div>
+
 <script>
 (function(){
   var VIEWS=['home','about','approach','science','projects','homesite'];
   /* names that are not tabs: each opens a tab and scrolls to a place in it (no tab given: stay on this one) */
-  var ALIAS={contact:[null,'contact'],testimonials:['home',null],words:['home',null],developer:['about','developer'],architect:['about','architect'],cmar:['approach','method'],method:['approach','method'],scope:['approach','scope'],technology:['science','technology'],homesites:['homesite',null],lot94:['homesite','lot94'],lot50:['homesite','lot50'],lot51:['homesite','lot51']};
+  var ALIAS={contact:[null,'contact'],testimonials:['home','words'],words:['home','words'],developer:['about','developer'],architect:['about','architect'],cmar:['approach','method'],method:['approach','method'],scope:['approach','scope'],technology:['science','technology'],homesites:['homesite',null],lot94:['homesite','lot94'],lot50:['homesite','lot50'],lot51:['homesite','lot51']};
   var $=function(id){return document.getElementById(id)};
   var body=document.body, menu=$('menu'), menuBtn=$('menuBtn'), video=$('heroVideo');
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1174,10 +1243,84 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   gal.addEventListener('touchstart',function(e){ tx=e.changedTouches[0].clientX; },{passive:true});
   gal.addEventListener('touchend',function(e){ if(tx===null) return; var d=e.changedTouches[0].clientX-tx; tx=null; if(Math.abs(d)>44) showPhoto(gi+(d<0?1:-1)); },{passive:true});
   addEventListener('keydown',function(e){
-    if(e.key==='Escape'){ if(!gal.hidden) setGallery(false); else if(menu.classList.contains('open')){ setMenu(false); menuBtn.focus(); } }
+    if(e.key==='Escape'){ if(shutReader()){} else if(!gal.hidden) setGallery(false); else if(menu.classList.contains('open')){ setMenu(false); menuBtn.focus(); } }
     if(!gal.hidden&&e.key==='ArrowRight') showPhoto(gi+1);
     if(!gal.hidden&&e.key==='ArrowLeft') showPhoto(gi-1);
   });
+
+  /* testimonials. Only words Cy has approved are in the page's markup; what a visitor writes is never shown here.
+     The row is swiped or stepped with two buttons, a long one opens whole, and the form drafts an email to SkyPac. */
+  var fitWords=function(){}, shutReader=function(){ return false; };
+  (function(){
+    var band=$('words'), row=$('said'), box=$('reader'); if(!band||!row||!box) return;
+    var told=[].slice.call(row.querySelectorAll('figure')), from=null;
+    band.classList.add('ready');
+    function setReader(open){
+      box.hidden=!open; body.classList.toggle('locked',open); document.querySelector('.top').style.visibility=open?'hidden':'';
+      behind.forEach(function(el){ if(el) el.inert=open; });
+      if(open){ box.querySelector('figure').scrollTop=0; $('readerClose').focus(); } else if(from){ from.focus(); from=null; }
+    }
+    shutReader=function(){ if(box.hidden) return false; setReader(false); return true; };
+    $('readerClose').addEventListener('click',function(){ setReader(false); });
+    if(told.length){
+      $('saidWrap').hidden=false;
+      var mark=function(){
+        $('saidNav').hidden=row.scrollWidth<=row.clientWidth+4;
+        $('saidPrev').disabled=row.scrollLeft<4; $('saidNext').disabled=row.scrollLeft+row.clientWidth>=row.scrollWidth-4;
+      };
+      var move=function(d){ row.scrollBy({left:d*(told.length>1?told[1].offsetLeft-told[0].offsetLeft:row.clientWidth),behavior:calm?'auto':'smooth'}); };
+      $('saidPrev').addEventListener('click',function(){ move(-1); });
+      $('saidNext').addEventListener('click',function(){ move(1); });
+      var busy=false; row.addEventListener('scroll',function(){ if(!busy){ busy=true; requestAnimationFrame(function(){ busy=false; mark(); }); } },{passive:true});
+      fitWords=function(){
+        if(!row.clientWidth) return;                                               /* Home is not the open tab */
+        told.forEach(function(f){
+          var q=f.querySelector('blockquote'), b=f.querySelector('button'), long=q.scrollHeight>q.clientHeight+2;
+          f.classList.toggle('long',long);
+          if(long&&!b){
+            b=document.createElement('button'); b.className='btn'; b.type='button'; b.textContent='Continue reading'; b.setAttribute('aria-haspopup','dialog');
+            b.addEventListener('click',function(){ $('readerText').innerHTML=q.innerHTML; $('readerBy').innerHTML=f.querySelector('figcaption').innerHTML; from=b; setReader(true); });
+            f.insertBefore(b,q.nextSibling);
+          }
+          if(b) b.hidden=!long;
+        });
+        mark();
+      };
+      addEventListener('resize',fitWords);
+      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitWords);
+    }
+    /* the form sends through Web3Forms to SkyPac's inbox. The key below is that service's public form key: it can
+       only deliver to the address Cy registered. If the send fails, the same words are offered as a drafted email. */
+    var KEY='f1f0db6d-5e40-41f2-b690-b4069892f6ca', note=$('tell'), ready=$('tellDraft'), done=$('tellDone'), opener=$('tellOpen'), send=note.querySelector('button[type=submit]'), busy2=false;
+    function shown(what){ note.hidden=what!==note; ready.hidden=what!==ready; done.hidden=what!==done; if(what&&what!==note) what.focus(); }
+    opener.addEventListener('click',function(){
+      var open=note.hidden&&ready.hidden; shown(open?note:null);                    /* from the thank you, it opens a fresh form */
+      opener.setAttribute('aria-expanded',open); opener.textContent=open?'Close the form':'Add your testimonial';
+      if(open) $('t-name').focus();
+    });
+    note.addEventListener('submit',function(e){
+      e.preventDefault(); if(busy2) return;
+      var name=$('t-name').value.trim(), role=$('t-role').value.trim(), said=$('t-words').value.trim(), reach=$('t-reach').value.trim();
+      if(!name||!said||!reach){ $('tellHelp').textContent='Add your name, your testimonial and an email or phone number so SkyPac can confirm it with you.'; (!name?$('t-name'):!said?$('t-words'):$('t-reach')).focus(); return; }
+      var text='Hello SkyPac,\n\nHere is my testimonial for your website.\n\n"'+said+'"\n\n'+name+(role?'\n'+role:'')+'\n'+reach+'\n\nYou may publish these words with my name.';
+      $('tellText').textContent=text;
+      $('tellMail').href='mailto:'+TO+'?subject='+encodeURIComponent('Testimonial from '+name)+'&body='+encodeURIComponent(text);
+      var thanks=function(){ note.reset(); shown(done); opener.setAttribute('aria-expanded','false'); opener.textContent='Add your testimonial'; };
+      if($('t-check').checked){ thanks(); return; }                                 /* a box no person can see was ticked */
+      var data={access_key:KEY,subject:'New testimonial from '+name,from_name:'SkyPac website',name:name,project_company_or_role:role||'(not given)',testimonial:said,email_or_phone:reach,permission:'SkyPac may publish these words with my name.'};
+      if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(reach)) data.email=reach;
+      busy2=true; send.disabled=true; send.textContent='Sending';
+      var free=function(){ busy2=false; send.disabled=false; send.textContent='Send to SkyPac'; };
+      var ask=window.fetch?fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+        .then(function(r){ return r.json().then(function(j){ if(!r.ok||!j||j.success!==true) throw new Error('not sent'); }); }):Promise.reject(new Error('no fetch'));
+      ask.then(function(){ free(); thanks(); },function(){ free(); shown(ready); });
+    });
+    $('tellEdit').addEventListener('click',function(){ shown(note); $('t-words').focus(); });
+    $('tellCopy').addEventListener('click',function(e){
+      var b=e.currentTarget, said=function(ok){ b.textContent=ok?'Copied':'Select the text above to copy it'; };
+      try{ navigator.clipboard.writeText($('tellText').textContent).then(function(){said(true)},function(){said(false)}); }catch(err){ said(false); }
+    });
+  })();
 
   /* contact: draft an email, never claim it was sent */
   var form=$('ask'), draft=$('draft'), TO='cy@skypaccontracting.com';
@@ -1307,7 +1450,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
      visibility. A block that sits on screen without crossing its line is revealed after a second or two, and the top
      and the end of a page reveal whatever is on screen. A tab replays its blocks when it opens.
      Nothing is hidden unless this runs and motion is allowed. */
-  var RV='.plate:not(.hero) .inner>*,.band>h2,.band>p,.job>dl,.sketch .sk,.sk-text>p,.intro>*,.cols>div,.care .row,.steps>li,.path label,.scope-foot,.index tbody tr,.slots figure,.wall-ctl,.wall-fig';
+  var RV='.plate:not(.hero) .inner>*,.band>h2,.band>p,.job>dl,.sketch .sk,.sk-text>p,.intro>*,.cols>div,.care .row,.steps>li,.path label,.scope-foot,.index tbody tr,.said-wrap,.tell,.wall-ctl,.wall-fig';
   var moving=false, live=[], drift=null, queued=false;
   function words(el){
     [].slice.call(el.childNodes).forEach(function(n){
@@ -1356,7 +1499,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     });
   }
   function tick(){ queued=false; if(moving) sweep(false); if(drift) drift(); }
-  function opened(){ if(moving) sweep(true); if(drift) drift(); }                  /* a tab has just opened */
+  function opened(){ if(moving) sweep(true); if(drift) drift(); fitWords(); }      /* a tab has just opened */
   function replay(scope){
     if(!moving) return;
     arm([].map.call(scope.querySelectorAll('.rv'),function(el){ return [el,'bottom']; }));
