@@ -251,7 +251,8 @@ a.src:hover{border-color:var(--cream)}
 }
 
 /* testimonials: a row that runs off the right edge of the page and is swiped, or stepped with two buttons. Only
-   words Cy has approved are in it; with none yet the row is not shown and the invitation stands alone. A long one is
+   words Cy has approved are in it (the page does not say so, at his word); with none yet the row is not shown and the
+   invitation stands alone. A long one is
    cut at six lines with a way to read the rest (.ready is set by the script, so nothing is cut without it). */
 .said-wrap{display:grid;gap:28px;min-width:0}
 .said{--gap:clamp(44px,6vw,104px);display:flex;gap:var(--gap);min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;
@@ -613,7 +614,6 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     </div>
     <div class="tell">
       <p class="lead">Built or worked with SkyPac? Tell us how it went.</p>
-      <p class="quiet">We read every testimonial before it appears here.</p>
       <button class="btn" id="tellOpen" type="button" aria-expanded="false" aria-controls="tell">Add your testimonial</button>
       <form id="tell" novalidate hidden>
         <label for="t-name">Your name<input id="t-name" name="name" type="text" autocomplete="name" required></label>
@@ -625,7 +625,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
         <button class="btn" type="submit">Send to SkyPac</button>
       </form>
       <div class="draft" id="tellDone" hidden tabindex="-1">
-        <p>Thank you. Your testimonial is with SkyPac, and it will appear here once it has been read.</p>
+        <p>Thank you. Your testimonial is on its way to SkyPac.</p>
       </div>
       <div class="draft" id="tellDraft" hidden tabindex="-1">
         <p>That could not be sent from this page, so it is drafted here as an email instead. Nothing has been sent yet.</p>
