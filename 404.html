@@ -11,8 +11,8 @@
 (function(){
   /* on its own domain the site sits at the root; on <user>.github.io it sits under the repository's name */
   var seg=location.pathname.split('/'), base=(/\.github\.io$/i.test(location.hostname)&&seg[1])?'/'+seg[1]+'/':'/';
-  var known=['about','approach','architect','cmar','contact','developer','home','homesite','homesites','lot50','lot51','lot94','method','projects','science','scope','technology','testimonials','words'], p=location.pathname.slice(base.length).replace(/\/+$/,'').replace(/\.html?$/,'').toLowerCase();
-  if(known.indexOf(p)>=0){ location.replace(base+'#'+p); return; }
+  var known={"about":"about/","approach":"approach/","architect":"about/#architect","cmar":"approach/#method","contact":"#contact","developer":"about/#developer","home":"","homesite":"homesites/","homesites":"homesites/","lot50":"homesites/#lot50","lot51":"homesites/#lot51","lot94":"homesites/#lot94","method":"approach/#method","projects":"projects/","science":"science-and-technology/","scope":"approach/#scope","technology":"science-and-technology/#technology","testimonials":"#testimonials","words":"#words"}, p=location.pathname.slice(base.length).replace(/\/+$/,'').replace(/\.html?$/,'').toLowerCase();
+  if(Object.prototype.hasOwnProperty.call(known,p)){ location.replace(base+known[p]); return; }
   document.addEventListener('DOMContentLoaded',function(){ document.getElementById('home').href=base; });
 })();
 </script>

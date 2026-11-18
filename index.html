@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SkyPac Contracting | Missoula, Montana</title>
+<title>SkyPac Contracting | General Contractor in Missoula, MT</title>
 <meta name="description" content="SkyPac builds custom homes, spec homes, multifamily and commercial projects in Missoula and western Montana. We underwrite, plan, permit and build.">
 <link rel="canonical" href="https://skypaccontracting.com/">
 <meta name="theme-color" content="#00161e">
-<link rel="icon" href="favicon-192.png" type="image/png" sizes="192x192">
-<link rel="icon" href="favicon-96.png" type="image/png" sizes="96x96">
-<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SkyPac Contracting">
 <meta property="og:title" content="SkyPac Contracting">
@@ -23,56 +23,21 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The SkyPac logo over the front of the Christian Drive Residence">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": "WebSite",
-   "@id": "https://skypaccontracting.com/#website",
-   "url": "https://skypaccontracting.com/",
-   "name": "SkyPac Contracting",
-   "alternateName": "SkyPac",
-   "inLanguage": "en-US",
-   "publisher": {
-    "@id": "https://skypaccontracting.com/#organization"
-   }
-  },
-  {
-   "@type": "Organization",
-   "@id": "https://skypaccontracting.com/#organization",
-   "name": "SkyPac Contracting",
-   "legalName": "SkyPac Contracting LLC",
-   "url": "https://skypaccontracting.com/",
-   "logo": {
-    "@type": "ImageObject",
-    "url": "https://skypaccontracting.com/img/logo-512.png",
-    "width": 512,
-    "height": 512
-   },
-   "image": "https://skypaccontracting.com/img/share.jpg",
-   "description": "SkyPac builds custom homes, spec homes, multifamily and commercial projects in Missoula and western Montana. We underwrite, plan, permit and build.",
-   "telephone": "+1-406-240-9474",
-   "email": "cy@skypaccontracting.com",
-   "address": {
-    "@type": "PostalAddress",
-    "postOfficeBoxNumber": "17251",
-    "addressLocality": "Missoula",
-    "addressRegion": "MT",
-    "postalCode": "59808",
-    "addressCountry": "US"
-   },
-   "areaServed": [
-    "Missoula, Montana",
-    "Western Montana"
-   ],
-   "founder": {
-    "@type": "Person",
-    "name": "Cy Sirmon"
-   }
-  }
- ]
-}
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://skypaccontracting.com/#website","url":"https://skypaccontracting.com/","name":"SkyPac Contracting","alternateName":"SkyPac","inLanguage":"en-US","publisher":{"@id":"https://skypaccontracting.com/#organization"}},{"@type":"GeneralContractor","@id":"https://skypaccontracting.com/#organization","name":"SkyPac Contracting","legalName":"SkyPac Contracting LLC","url":"https://skypaccontracting.com/","logo":{"@type":"ImageObject","url":"https://skypaccontracting.com/img/logo-512.png","width":512,"height":512},"image":"https://skypaccontracting.com/img/share.jpg","description":"SkyPac builds custom homes, spec homes, multifamily and commercial projects in Missoula and western Montana. We underwrite, plan, permit and build.","telephone":"+1-406-240-9474","email":"cy@skypaccontracting.com","address":{"@type":"PostalAddress","postOfficeBoxNumber":"17251","addressLocality":"Missoula","addressRegion":"MT","postalCode":"59808","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Missoula, Montana"},{"@type":"AdministrativeArea","name":"Missoula County, Montana"},{"@type":"AdministrativeArea","name":"Western Montana"}],"founder":{"@type":"Person","name":"Cy Sirmon"},"knowsAbout":["Custom homes","Spec homes","Multifamily construction","Commercial construction","Condominiums","Integrated construction management","Building science"]}]}</script>
+<style>
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:2;animation:skypac-shut .6s cubic-bezier(.7,0,.3,1) both}
+::view-transition-new(root){z-index:1}
+@keyframes skypac-shut{from{clip-path:circle(var(--vt-r,150vmax) at var(--vt-x,90%) var(--vt-y,38px))}to{clip-path:circle(0 at var(--vt-x,90%) var(--vt-y,38px))}}
+</style>
+<script>
+addEventListener('pagereveal',function(e){
+  var m=null; try{ m=JSON.parse(sessionStorage.getItem('skypacMenu')); sessionStorage.removeItem('skypacMenu'); }catch(x){}
+  if(!e.viewTransition) return;
+  if(!m||!m[0]||matchMedia('(prefers-reduced-motion: reduce)').matches){ e.viewTransition.skipTransition(); return; }
+  var r=document.documentElement.style; r.setProperty('--vt-x',m[0]); r.setProperty('--vt-y',m[1]); r.setProperty('--vt-r',m[2]);
+});
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -565,7 +530,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 }
 </style>
 </head>
-<body data-view="home">
+<body data-view="home" data-page="home">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="logo" viewBox="28 50 318 57">
@@ -584,7 +549,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 </svg>
 
 <header class="top">
-  <a class="brand" href="#home" aria-label="SkyPac, home"><svg viewBox="0 0 318 57" aria-hidden="true"><use href="#logo"/></svg></a>
+  <a class="brand" href="/" aria-label="SkyPac, home"><svg viewBox="0 0 318 57" aria-hidden="true"><use href="#logo"/></svg></a>
   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open the menu"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </header>
 
@@ -593,12 +558,12 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     <i data-art="home"></i><i data-art="about"></i><i data-art="approach"></i><i data-art="science"></i><i data-art="projects"></i><i data-art="homesite"></i>
   </div>
   <nav aria-label="Menu">
-    <a href="#home" style="--i:0"><span>Home</span></a>
-    <a href="#about" style="--i:1"><span>About</span></a>
-    <a href="#approach" style="--i:2"><span>Approach</span></a>
-    <a href="#science" style="--i:3"><span>Science and technology</span></a>
-    <a href="#projects" style="--i:4"><span>Projects</span></a>
-    <a href="#homesite" style="--i:5"><span>Available homesites</span></a>
+    <a href="/" data-tab="home" style="--i:0"><span>Home</span></a>
+    <a href="/about/" data-tab="about" style="--i:1"><span>About</span></a>
+    <a href="/approach/" data-tab="approach" style="--i:2"><span>Approach</span></a>
+    <a href="/science-and-technology/" data-tab="science" style="--i:3"><span>Science and technology</span></a>
+    <a href="/projects/" data-tab="projects" style="--i:4"><span>Projects</span></a>
+    <a href="/homesites/" data-tab="homesite" style="--i:5"><span>Available homesites</span></a>
   </nav>
   <div class="menu-foot">
     <p class="quiet">Missoula, Montana<br><a href="tel:+14062409474">406.240.9474</a></p>
@@ -611,8 +576,8 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 <section class="view" id="view-home">
   <div class="plate hero drift">
     <picture>
-      <source media="(orientation:portrait)" srcset="img/front-p.webp">
-      <img src="img/front-l.webp" alt="Front of the Christian Drive Residence, a single-story home with a wood entry door and the Missoula hills behind it" fetchpriority="high">
+      <source media="(orientation:portrait)" srcset="/img/front-p.webp">
+      <img src="/img/front-l.webp" alt="Front of the Christian Drive Residence, a single-story home with a wood entry door and the Missoula hills behind it" fetchpriority="high" fetchpriority="high">
     </picture>
     <video id="heroVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="inner">
@@ -654,7 +619,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
       <div>
         <h3>How we work</h3>
         <p>Four tenets run every job. Together they spell CARE.</p>
-        <p class="jumps"><a class="link" href="#about">Read about SkyPac</a><a class="link" href="#approach">See our approach</a><a class="link" href="#science">See our science and technology</a></p>
+        <p class="jumps"><a class="link" href="/about/">Read about SkyPac</a><a class="link" href="/approach/">See our approach</a><a class="link" href="/science-and-technology/">See our science and technology</a></p>
       </div>
     </div>
   </div>
@@ -697,433 +662,13 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 
   <div class="plate">
     <picture>
-      <source media="(orientation:portrait)" srcset="img/kitchen-p.webp">
-      <img src="img/kitchen-l.webp" alt="Kitchen of the Christian Drive Residence with a long white island, wood stools and pendant lights" loading="lazy">
+      <source media="(orientation:portrait)" srcset="/img/kitchen-p.webp">
+      <img src="/img/kitchen-l.webp" alt="Kitchen of the Christian Drive Residence with a long white island, wood stools and pendant lights" loading="lazy">
     </picture>
     <div class="inner">
       <h2>Christian Drive Residence</h2>
       <p>A single-level custom home in Linda Vista with polished concrete floors and views to the Missoula hills.</p>
-      <p><a class="link" href="#projects">See the project</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="view-about" hidden>
-  <div class="plate drift">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/deck-p.webp">
-      <img src="img/deck-l.webp" alt="Two of the crew talking on a newly laid subfloor at the Haidyn Residences, the sun behind cloud and hills beyond" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h1>Four words run every job</h1>
-      <p>Communication, accountability, respect and effort. At SkyPac they spell CARE.</p>
-    </div>
-  </div>
-
-  <div class="band ink">
-    <h2>CARE, spelled out</h2>
-    <div class="care">
-      <div class="row"><span class="ltr" aria-hidden="true">C</span><h3>Communication</h3><p>Building is a collaboration. We keep owners, designers and trades in the loop, which makes for an efficient and enjoyable experience.</p></div>
-      <div class="row"><span class="ltr" aria-hidden="true">A</span><h3>Accountability</h3><p>The buck stops with us. No finger pointing.</p></div>
-      <div class="row"><span class="ltr" aria-hidden="true">R</span><h3>Respect</h3><p>For your budget, your time, your neighbors and every trade on the site.</p></div>
-      <div class="row"><span class="ltr" aria-hidden="true">E</span><h3>Effort</h3><p>The work nobody will see gets the same attention as the work everybody will.</p></div>
-    </div>
-  </div>
-
-  <div class="band">
-    <p class="lead">Before Cy Sirmon built projects, he underwrote them.</p>
-    <div class="cols">
-      <div><p>Cy&rsquo;s first career was in commercial banking, on the lender&rsquo;s side of the same kinds of projects SkyPac now builds. He analyzed risk, underwrote project viability and sponsor financial packages, scrutinized pro formas, and verified budgets and pay applications. He sat at the decision table in lending committees and had a hand in deploying more than $100 million in debt.</p><p>He knows what a lender looks for because he was the one looking. That expertise now integrates with the construction process: every job is evaluated as an investment before it is built as a structure.</p></div>
-      <div><p>Before banking, Cy played football for the Montana Grizzlies. He lettered four years, playing in all 47 games and starting 23. He was named <span class="nb">first-team</span> <span class="nb">All-Big Sky</span> by Phil Steele, won the Paul Weskamp Award as the team&rsquo;s outstanding offensive lineman and was Academic <span class="nb">All-Big Sky</span> three times.</p></div>
-    </div>
-  </div>
-
-  <div class="band ink" id="developer">
-    <h2>A developer&rsquo;s contractor</h2>
-    <p class="lead">Cy has been the banker, the developer and the builder.</p>
-    <div class="cols wide">
-      <div>
-        <p>He has developed entire projects of his own, from the first cold call through syndication and construction, and he is thoroughly tied into development code and legislation. In October 2026 he spoke before Missoula City Council on the garage and driveway rules in the city&rsquo;s Unified Development Code, as <a class="src" href="https://nbcmontana.com/news/local/missoula-approves-amendments-to-udc-to-address-ai-definition-garage-zoning" target="_blank" rel="noopener">NBC Montana reported</a>.</p>
-      </div>
-      <div>
-        <p>Cy understands the unique challenges developers face, and how hard it is to create a product that pencils. That understanding lets SkyPac add value across the entire project and deliver a more lucrative product. And because no two deals are structured alike, we are open to creative and novel compensation arrangements.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="band sketch" id="architect">
-    <img class="sk" src="img/sketch-kitchen.webp" alt="Hand sketch of a kitchen in perspective, with cabinets, a range, a sink and an island, drawn on graph paper" loading="lazy">
-    <h2>An architect&rsquo;s contractor</h2>
-    <div class="sk-text">
-      <p>High-end work lives in nuanced details and complex workflows. Cy is well versed in design, understands the level of detail that work demands, and leverages that skill to improve the product and value engineer it without flattening the design.</p>
-      <p>He has designed multiple scaled floor plans from scratch, with a drafting pencil and ruler. He thinks spatially, and can work out how assemblies come together before anything is built.</p>
-      <p>Communication, the C in CARE, makes the difference. Our collaborative approach heads off RFIs, field engineering and scope gaps, so design intent survives the build.</p>
-    </div>
-    <p class="quiet cap">The drawing is Cy&rsquo;s own: a kitchen, sketched in pencil.</p>
-    <p><a class="link" href="#approach">See how we work</a></p>
-  </div>
-
-</section>
-
-<section class="view" id="view-approach" hidden>
-  <div class="plate drift">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/forms-p.webp">
-      <img src="img/forms-l.webp" alt="Concrete forms for the stem walls of a custom home stepping away from the camera, with houses and hills beyond" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h1>We do things differently</h1>
-      <p>How SkyPac plans, prices and builds.</p>
-      <p class="jumps"><button class="btn" type="button" data-jump="work">How we work</button><button class="btn" type="button" data-jump="method">The SkyPac method</button><button class="btn" type="button" data-jump="scope">Build your scope</button><a class="link" href="#science">Science and technology</a></p>
-    </div>
-  </div>
-
-  <div class="band" id="work">
-    <div class="cols">
-      <div><h3>Before we build</h3><p>Every plan set gets a sheet by sheet review before ground breaks. Then we meet each trade, before they are hired, to walk through scope, constraints, alternatives and risk. Those meetings settle who owns what, draw out better ways to build, and surface risks while they are still cheap to solve.</p></div>
-      <div><h3>Systems that dry</h3><p>Western Montana swings from deep cold to dry heat. Rainscreen cladding, an airtight envelope and controlled ventilation work as one system, so the structure stays dry and the air inside stays clean.</p><p><a class="link" href="#science">See our building science</a></p></div>
-      <div><h3>Numbers that tie</h3><p>Our budgets come with their source material. Owners see the bids and quotes behind every line, and every contractor discount passes through to them. Complete transparency.</p></div>
-    </div>
-  </div>
-
-  <div class="band ink" id="method">
-    <h2>Integration is the SkyPac method</h2>
-    <p class="lead">SkyPac works as an integrated construction manager, at the table while the project is still on paper.</p>
-    <p class="note">We join the owner and design team during design, shape cost and schedule as the drawings develop, then build what we helped plan. We work this way on commercial, multifamily and custom residential projects.</p>
-    <ol class="steps">
-      <li><h3>Design</h3><p>We estimate, schedule and value engineer alongside the design team, so cost shapes the drawings from the first sketch.</p></li>
-      <li><h3>Pricing</h3><p>Before construction starts, the project is priced on real bids, with the books open.</p></li>
-      <li><h3>Construction</h3><p>We manage the trades, the schedule and the budget through closeout.</p></li>
-    </ol>
-    <p class="lead">Integration works best when the builder speaks two languages: the developer&rsquo;s and the architect&rsquo;s.</p>
-    <p class="jumps"><a class="link" href="#developer">See how SkyPac speaks both</a><a class="link" href="#science">See our science and technology</a></p>
-  </div>
-
-  <div class="band" id="scope">
-    <div class="intro">
-      <h2>Build your scope</h2>
-      <p class="note">Choose the phase where SkyPac comes in. We take responsibility from there on.</p>
-    </div>
-    <div class="path" role="radiogroup" aria-label="Where SkyPac starts">
-      <input class="sr" type="radio" name="start" id="start0" value="0" checked>
-      <label for="start0"><span class="rail" aria-hidden="true"><b>1</b><i></i></span><span class="what"><span class="phead"><strong>Inception</strong><span class="here">SkyPac starts here</span></span><em data-ph="0">We underwrite the idea, testing its pro forma, budget and risk, and help you select the best project.</em></span></label>
-      <input class="sr" type="radio" name="start" id="start1" value="1">
-      <label for="start1"><span class="rail" aria-hidden="true"><b>2</b><i></i></span><span class="what"><span class="phead"><strong>Design</strong><span class="here">SkyPac starts here</span></span><em data-ph="1">We maximize the value of the project we selected together, weighing every design decision against the pro forma.</em></span></label>
-      <input class="sr" type="radio" name="start" id="start2" value="2">
-      <label for="start2"><span class="rail" aria-hidden="true"><b>3</b><i></i></span><span class="what"><span class="phead"><strong>Permitting</strong><span class="here">SkyPac starts here</span></span><em data-ph="2">We helped shape these drawings, so the set goes in complete. Then we leverage our working relationships to expedite the review.</em></span></label>
-      <input class="sr" type="radio" name="start" id="start3" value="3">
-      <label for="start3"><span class="rail" aria-hidden="true"><b>4</b><i></i></span><span class="what"><span class="phead"><strong>Construction</strong><span class="here">SkyPac starts here</span></span><em data-ph="3">We build what we underwrote, shaped and carried through review, knowing every detail on day one. Trades aligned, budget transparent, building science in every wall.</em></span></label>
-    </div>
-    <div class="scope-foot">
-      <p class="sr" id="scopeSay" aria-live="polite"></p>
-      <p><button class="btn" type="button" id="scopeGo" data-jump="contact">Send this scope to SkyPac</button></p>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="view-science" hidden>
-  <div class="plate drift">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/n1-p.webp">
-      <img src="img/n1-l.webp" alt="A new gabled building wrapped in weather barrier beside a historic brick storefront on North 1st Street" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h1>Science and technology</h1>
-      <p>SkyPac constantly pursues proven and innovative ways to improve the built product.</p>
-      <p class="jumps"><button class="btn" type="button" data-jump="assembly">The wall</button><button class="btn" type="button" data-jump="details">The details</button><button class="btn" type="button" data-jump="technology">Technology</button></p>
-    </div>
-  </div>
-
-  <div class="band ink" id="assembly">
-    <p class="lead">Take a SkyPac wall apart.</p>
-    <div class="wall" id="wall">
-      <div class="wall-ctl">
-        <div class="chips" role="group" aria-label="Wall layers"><button class="chip" type="button" data-step="1" aria-pressed="false" aria-label="1, Capillary break">1</button><button class="chip" type="button" data-step="2" aria-pressed="false" aria-label="2, Framing">2</button><button class="chip" type="button" data-step="3" aria-pressed="false" aria-label="3, Sealant">3</button><button class="chip" type="button" data-step="4" aria-pressed="false" aria-label="4, Plywood">4</button><button class="chip" type="button" data-step="5" aria-pressed="false" aria-label="5, Housewrap">5</button><button class="chip" type="button" data-step="6" aria-pressed="false" aria-label="6, Window sill">6</button><button class="chip" type="button" data-step="7" aria-pressed="false" aria-label="7, Rainscreen">7</button><button class="chip" type="button" data-step="8" aria-pressed="false" aria-label="8, Siding">8</button><button class="chip" type="button" data-step="9" aria-pressed="false" aria-label="9, Inside">9</button></div>
-        <div class="wall-cap" aria-live="polite">
-          <h3 id="wallT">The whole wall</h3>
-          <p id="wallD">Nine layers, each with a job. Gold marks every bead of sealant. Tap a number to build the wall.</p>
-        </div>
-        <p class="wall-nav"><button class="btn" id="wallNext" type="button">Start at the foundation</button><button class="btn" id="wallAll" type="button" hidden>Show the whole wall</button></p>
-      </div>
-      <figure class="wall-fig"><svg viewBox="0 0 240 400" role="img" aria-label="A wall seen from outside, cut back layer by layer"><defs><pattern id="e-conc" width="14" height="12" patternUnits="userSpaceOnUse"><rect width="14" height="12" fill="#0d3443"/><circle cx="3" cy="3" r=".9" fill="rgba(235,231,215,.45)"/><circle cx="10" cy="8" r=".7" fill="rgba(235,231,215,.4)"/><circle cx="7" cy="5" r=".5" fill="rgba(235,231,215,.3)"/></pattern><pattern id="e-ins" width="20" height="13" patternUnits="userSpaceOnUse"><path d="M0,9 Q5,-2 10,9 T20,9" fill="none" stroke="rgba(235,231,215,.5)" stroke-width="1"/></pattern><clipPath id="e-c4"><polygon points="140,0.0 240,0.0 240,400.0 0,400.0 0,186.7"/></clipPath><clipPath id="e-c5"><polygon points="240,6.7 240,400.0 0,400.0 0,326.7"/></clipPath><clipPath id="e-c7"><polygon points="240,86.7 240,400.0 5,400.0"/></clipPath><clipPath id="e-c8"><polygon points="240,180.0 240,400.0 75,400.0"/></clipPath><clipPath id="e-out"><path clip-rule="evenodd" d="M-10,35H250V355H-10Z M150,85H250V235H150Z"/></clipPath><linearGradient id="e-s4" gradientUnits="userSpaceOnUse" x1="140" y1="0" x2="130.4" y2="-7.2"><stop offset="0" stop-color="#00161e" stop-opacity=".6"/><stop offset="1" stop-color="#00161e" stop-opacity="0"/></linearGradient><linearGradient id="e-s5" gradientUnits="userSpaceOnUse" x1="245" y1="0" x2="235.4" y2="-7.2"><stop offset="0" stop-color="#00161e" stop-opacity=".6"/><stop offset="1" stop-color="#00161e" stop-opacity="0"/></linearGradient><linearGradient id="e-s8" gradientUnits="userSpaceOnUse" x1="375" y1="0" x2="365.4" y2="-7.2"><stop offset="0" stop-color="#00161e" stop-opacity=".6"/><stop offset="1" stop-color="#00161e" stop-opacity="0"/></linearGradient></defs><g transform="translate(0,-19)"><g class="L" data-layer="1"><rect class="w-conc" x="-10" y="363.5" width="260" height="70" fill="url(#e-conc)"/><line class="w-beadt" x1="-10" y1="357" x2="250" y2="357"/><line class="w-beadt" x1="-10" y1="362" x2="250" y2="362"/><line class="w-cap" x1="-10" y1="359.5" x2="250" y2="359.5"/><circle class="w-pin" cx="46" cy="359.5" r="8"/></g><g class="L" data-layer="9"><rect class="w-ins" x="-10" y="45" width="18" height="305" fill="url(#e-ins)"/><rect class="w-ins" x="13" y="45" width="48.33" height="305" fill="url(#e-ins)"/><rect class="w-ins" x="66.33" y="45" width="48.33" height="305" fill="url(#e-ins)"/><rect class="w-ins" x="119.67" y="45" width="20.33" height="305" fill="url(#e-ins)"/><rect class="w-ins" x="150" y="240" width="18" height="110" fill="url(#e-ins)"/><rect class="w-ins" x="173" y="240" width="48.33" height="110" fill="url(#e-ins)"/><rect class="w-ins" x="226.33" y="240" width="23.67" height="110" fill="url(#e-ins)"/></g><g class="L" data-layer="2"><rect class="w-wood" x="-10" y="35" width="260" height="5"/><rect class="w-wood" x="-10" y="40" width="260" height="5"/><rect class="w-wood" x="-10" y="350" width="260" height="5"/><rect class="w-wood" x="8" y="45" width="5" height="305"/><rect class="w-wood" x="61.33" y="45" width="5" height="305"/><rect class="w-wood" x="114.67" y="45" width="5" height="305"/><rect class="w-wood" x="140" y="45" width="5" height="305"/><rect class="w-wood" x="145" y="85" width="5" height="265"/><rect class="w-wood" x="145" y="45" width="105" height="40"/><rect class="w-wood" x="150" y="235" width="100" height="5"/><rect class="w-wood" x="168" y="240" width="5" height="110"/><rect class="w-wood" x="221.33" y="240" width="5" height="110"/></g><g class="L" data-layer="3"><line class="w-beadl" x1="-10" y1="37.5" x2="250" y2="37.5"/><line class="w-beadl" x1="-10" y1="352.5" x2="250" y2="352.5"/><line class="w-beadl" x1="63.83" y1="35" x2="63.83" y2="355"/><line class="w-beadl" x1="223.83" y1="35" x2="223.83" y2="85"/><line class="w-beadl" x1="223.83" y1="235" x2="223.83" y2="355"/><polyline class="w-beadl" points="250,82.5 147.5,82.5 147.5,237.5 250,237.5"/></g><g class="L" data-layer="4"><g class="w-cut" clip-path="url(#e-out)"><polygon fill="url(#e-s4)" points="155,-20 -175,420 -190,420 140,-20"/><line class="w-edge" x1="155" y1="-20" x2="-175" y2="420"/></g><g clip-path="url(#e-c4)" data-peel="url(#e-c4)"><g clip-path="url(#e-out)"><rect class="w-ply" x="-10" y="35" width="73.83" height="320"/><rect class="w-ply" x="63.83" y="35" width="160" height="320"/><rect class="w-ply" x="223.83" y="35" width="26.17" height="320"/><path class="w-grain" d="M-4,35 C-4.0,140 -8.0,250 -4.0,355"/><path class="w-grain" d="M7,35 C11.0,140 9.7,250 8.7,355"/><path class="w-grain" d="M18,35 C17.0,140 18.4,250 19.8,355"/><path class="w-grain" d="M29,35 C25.3,140 25.7,250 29.3,355"/><path class="w-grain" d="M40,35 C42.0,140 43.9,250 38.5,355"/><path class="w-grain" d="M51,35 C54.2,140 49.1,250 49.1,355"/><path class="w-grain" d="M62,35 C59.2,140 60.7,250 61.4,355"/><path class="w-grain" d="M73,35 C70.5,140 76.7,250 74.3,355"/><path class="w-grain" d="M84,35 C87.4,140 80.4,250 86.0,355"/><path class="w-grain" d="M95,35 C96.6,140 96.1,250 95.8,355"/><path class="w-grain" d="M106,35 C102.2,140 108.1,250 104.9,355"/><path class="w-grain" d="M117,35 C116.4,140 113.1,250 115.0,355"/><path class="w-grain" d="M128,35 C132.0,140 131.1,250 126.9,355"/><path class="w-grain" d="M139,35 C138.6,140 138.8,250 139.8,355"/><path class="w-grain" d="M150,35 C146.1,140 147.2,250 152.0,355"/><path class="w-grain" d="M161,35 C162.4,140 165.0,250 162.3,355"/><path class="w-grain" d="M172,35 C175.5,140 169.5,250 171.4,355"/><path class="w-grain" d="M183,35 C180.7,140 182.3,250 181.1,355"/><path class="w-grain" d="M194,35 C191.1,140 197.4,250 192.5,355"/><path class="w-grain" d="M205,35 C208.1,140 201.2,250 205.3,355"/><path class="w-grain" d="M216,35 C218.1,140 217.7,250 217.8,355"/><path class="w-grain" d="M227,35 C223.4,140 228.5,250 228.7,355"/><path class="w-grain" d="M238,35 C236.8,140 234.2,250 238.0,355"/><path class="w-grain" d="M249,35 C252.9,140 252.5,250 247.3,355"/></g><polyline class="w-plyo" points="250,85 150,85 150,235 250,235"/><line class="w-beadd" x1="-10" y1="37.5" x2="250" y2="37.5"/><line class="w-beadd" x1="-10" y1="352.5" x2="250" y2="352.5"/><line class="w-beadd" x1="63.83" y1="35" x2="63.83" y2="355"/><line class="w-beadd" x1="223.83" y1="35" x2="223.83" y2="85"/><line class="w-beadd" x1="223.83" y1="235" x2="223.83" y2="355"/><polyline class="w-beadd" points="250,82.5 147.5,82.5 147.5,237.5 250,237.5"/></g></g><g class="L" data-layer="5"><g class="w-cut" clip-path="url(#e-out)"><polygon fill="url(#e-s5)" points="260,-20 -70,420 -85,420 245,-20"/><line class="w-edge" x1="260" y1="-20" x2="-70" y2="420"/></g><g clip-path="url(#e-c5)" data-peel="url(#e-c5)"><g clip-path="url(#e-out)"><rect class="w-wrapf" x="-10" y="35" width="260" height="320"/><line class="w-wrapl" x1="-10" y1="196" x2="250" y2="196"/><circle class="w-capn" cx="10.5" cy="58" r="1.3"/><circle class="w-capn" cx="10.5" cy="104" r="1.3"/><circle class="w-capn" cx="10.5" cy="150" r="1.3"/><circle class="w-capn" cx="10.5" cy="196" r="1.3"/><circle class="w-capn" cx="10.5" cy="242" r="1.3"/><circle class="w-capn" cx="10.5" cy="288" r="1.3"/><circle class="w-capn" cx="10.5" cy="334" r="1.3"/><circle class="w-capn" cx="63.83" cy="58" r="1.3"/><circle class="w-capn" cx="63.83" cy="104" r="1.3"/><circle class="w-capn" cx="63.83" cy="150" r="1.3"/><circle class="w-capn" cx="63.83" cy="196" r="1.3"/><circle class="w-capn" cx="63.83" cy="242" r="1.3"/><circle class="w-capn" cx="63.83" cy="288" r="1.3"/><circle class="w-capn" cx="63.83" cy="334" r="1.3"/><circle class="w-capn" cx="117.17" cy="58" r="1.3"/><circle class="w-capn" cx="117.17" cy="104" r="1.3"/><circle class="w-capn" cx="117.17" cy="150" r="1.3"/><circle class="w-capn" cx="117.17" cy="196" r="1.3"/><circle class="w-capn" cx="117.17" cy="242" r="1.3"/><circle class="w-capn" cx="117.17" cy="288" r="1.3"/><circle class="w-capn" cx="117.17" cy="334" r="1.3"/><circle class="w-capn" cx="144.5" cy="58" r="1.3"/><circle class="w-capn" cx="144.5" cy="104" r="1.3"/><circle class="w-capn" cx="144.5" cy="150" r="1.3"/><circle class="w-capn" cx="144.5" cy="196" r="1.3"/><circle class="w-capn" cx="144.5" cy="242" r="1.3"/><circle class="w-capn" cx="144.5" cy="288" r="1.3"/><circle class="w-capn" cx="144.5" cy="334" r="1.3"/><circle class="w-capn" cx="170.5" cy="58" r="1.3"/><circle class="w-capn" cx="170.5" cy="104" r="1.3"/><circle class="w-capn" cx="170.5" cy="150" r="1.3"/><circle class="w-capn" cx="170.5" cy="196" r="1.3"/><circle class="w-capn" cx="170.5" cy="242" r="1.3"/><circle class="w-capn" cx="170.5" cy="288" r="1.3"/><circle class="w-capn" cx="170.5" cy="334" r="1.3"/><circle class="w-capn" cx="223.83" cy="58" r="1.3"/><circle class="w-capn" cx="223.83" cy="104" r="1.3"/><circle class="w-capn" cx="223.83" cy="150" r="1.3"/><circle class="w-capn" cx="223.83" cy="196" r="1.3"/><circle class="w-capn" cx="223.83" cy="242" r="1.3"/><circle class="w-capn" cx="223.83" cy="288" r="1.3"/><circle class="w-capn" cx="223.83" cy="334" r="1.3"/></g><polyline class="w-wrapr" points="250,85 150,85 150,235 250,235"/></g></g><g class="L" data-layer="6"><rect class="w-apron" x="144" y="235" width="106" height="12"/><rect class="w-sill" x="150" y="224" width="100" height="11"/><line class="w-flash" x1="150" y1="224" x2="250" y2="224"/><g class="w-unit"><rect class="w-frame" x="153" y="88" width="100" height="136"/><rect class="w-glassf" x="159" y="94" width="94" height="124"/><line class="w-glass" x1="172" y1="150" x2="198" y2="106"/><line class="w-glass" x1="186" y1="170" x2="228" y2="100"/></g><circle class="w-pin" cx="197" cy="231" r="8"/></g><g class="L" data-layer="7"><g clip-path="url(#e-c7)" data-peel="url(#e-c7)"><g clip-path="url(#e-out)"><rect class="w-batt" x="6.5" y="35" width="8" height="320"/><rect class="w-batt" x="59.83" y="35" width="8" height="320"/><rect class="w-batt" x="113.17" y="35" width="8" height="320"/><rect class="w-batt" x="141" y="35" width="8" height="320"/><rect class="w-batt" x="166.5" y="35" width="8" height="320"/><rect class="w-batt" x="219.83" y="35" width="8" height="320"/></g></g></g><g class="L" data-layer="8"><g class="w-cut" clip-path="url(#e-out)"><polygon fill="url(#e-s8)" points="390,-20 60,420 45,420 375,-20"/><line class="w-edge" x1="390" y1="-20" x2="60" y2="420"/></g><g clip-path="url(#e-c8)" data-peel="url(#e-c8)"><g clip-path="url(#e-out)"><rect class="w-sidef" x="-10" y="35" width="260" height="320"/><line class="w-sidel" x1="-10" y1="55" x2="250" y2="55"/><line class="w-sidel" x1="-10" y1="75" x2="250" y2="75"/><line class="w-sidel" x1="-10" y1="95" x2="250" y2="95"/><line class="w-sidel" x1="-10" y1="115" x2="250" y2="115"/><line class="w-sidel" x1="-10" y1="135" x2="250" y2="135"/><line class="w-sidel" x1="-10" y1="155" x2="250" y2="155"/><line class="w-sidel" x1="-10" y1="175" x2="250" y2="175"/><line class="w-sidel" x1="-10" y1="195" x2="250" y2="195"/><line class="w-sidel" x1="-10" y1="215" x2="250" y2="215"/><line class="w-sidel" x1="-10" y1="235" x2="250" y2="235"/><line class="w-sidel" x1="-10" y1="255" x2="250" y2="255"/><line class="w-sidel" x1="-10" y1="275" x2="250" y2="275"/><line class="w-sidel" x1="-10" y1="295" x2="250" y2="295"/><line class="w-sidel" x1="-10" y1="315" x2="250" y2="315"/><line class="w-sidel" x1="-10" y1="335" x2="250" y2="335"/></g><path class="w-trim" fill-rule="evenodd" d="M140,75H250V245H140Z M150,85H250V235H150Z"/></g></g></g></svg><figcaption>From outside</figcaption></figure>
-      <figure class="wall-fig"><svg viewBox="40 0 180 300" role="img" aria-label="Section through the wall at a window, outside on the left"><defs><pattern id="s-conc" width="14" height="12" patternUnits="userSpaceOnUse"><rect width="14" height="12" fill="#0d3443"/><circle cx="3" cy="3" r=".9" fill="rgba(235,231,215,.45)"/><circle cx="10" cy="8" r=".7" fill="rgba(235,231,215,.4)"/><circle cx="7" cy="5" r=".5" fill="rgba(235,231,215,.3)"/></pattern><pattern id="s-ins" width="20" height="13" patternUnits="userSpaceOnUse"><path d="M0,9 Q5,-2 10,9 T20,9" fill="none" stroke="rgba(235,231,215,.5)" stroke-width="1"/></pattern><clipPath id="s-k0"><rect x="56" y="12" width="46" height="50"/></clipPath><clipPath id="s-k1"><rect x="56" y="146" width="46" height="54"/></clipPath><clipPath id="s-k2"><rect x="56" y="210" width="46" height="47"/></clipPath></defs><g class="L" data-layer="1"><rect class="w-conc" x="104" y="261" width="84" height="33" fill="url(#s-conc)"/><path class="w-s" d="M98,296.5 L106,292.5 L114,300.5 L122,292.5 L130,300.5 L138,292.5 L146,300.5 L154,292.5 L162,300.5 L170,292.5 L178,300.5 L186,292.5 L194,300.5"/><rect class="w-capf" x="107" y="255.4" width="59.2" height="3.2"/><ellipse class="w-bead" cx="124.6" cy="254.2" rx="5.5" ry="2.3"/><ellipse class="w-bead" cx="124.6" cy="259.8" rx="5.5" ry="2.3"/><circle class="w-pin" cx="124.6" cy="257" r="8"/></g><g class="L" data-layer="2"><rect class="w-wood" x="108.6" y="12" width="56" height="15"/><rect class="w-wood" x="108.6" y="27" width="56" height="15"/><rect class="w-stud" x="108.6" y="42" width="56" height="20"/><rect class="w-wood" x="108.6" y="146" width="56" height="15"/><rect class="w-stud" x="108.6" y="161" width="56" height="39"/><rect class="w-stud" x="108.6" y="210" width="56" height="28"/><rect class="w-wood" x="108.6" y="238" width="56" height="15"/><path class="w-bolt" d="M150,236 V281 H159"/><rect class="w-wood2" x="145.5" y="234.5" width="9" height="3.5"/><path class="w-s" d="M62,66 L70,62 L78,70 L86,62 L94,70 L102,62 L110,70 L118,62 L126,70 L134,62 L142,70 L150,62 L158,70 L166,62 L174,70 L182,62 L190,70"/><path class="w-s" d="M62,205 L70,201 L78,209 L86,201 L94,209 L102,201 L110,209 L118,201 L126,209 L134,201 L142,209 L150,201 L158,209 L166,201 L174,209 L182,201 L190,209"/></g><g class="L" data-layer="9"><rect class="w-ins" x="108.6" y="42" width="56" height="20" fill="url(#s-ins)"/><line class="w-vr" x1="166.5" y1="12" x2="166.5" y2="62"/><rect class="w-gyp" x="168.4" y="12" width="10" height="50"/><rect class="w-ins" x="108.6" y="161" width="56" height="39" fill="url(#s-ins)"/><line class="w-vr" x1="166.5" y1="126" x2="166.5" y2="200"/><rect class="w-gyp" x="168.4" y="126" width="10" height="74"/><rect class="w-ins" x="108.6" y="210" width="56" height="28" fill="url(#s-ins)"/><line class="w-vr" x1="166.5" y1="210" x2="166.5" y2="253"/><rect class="w-gyp" x="168.4" y="210" width="10" height="43"/><circle class="w-pin" cx="166.5" cy="172" r="8"/></g><g class="L" data-layer="4"><rect class="w-ply" x="98.6" y="12" width="10" height="50"/><line class="w-lam" x1="101.9" y1="12" x2="101.9" y2="62"/><line class="w-lam" x1="105.3" y1="12" x2="105.3" y2="62"/><rect class="w-ply" x="98.6" y="146" width="10" height="54"/><line class="w-lam" x1="101.9" y1="146" x2="101.9" y2="200"/><line class="w-lam" x1="105.3" y1="146" x2="105.3" y2="200"/><rect class="w-ply" x="98.6" y="210" width="10" height="46"/><line class="w-lam" x1="101.9" y1="210" x2="101.9" y2="256"/><line class="w-lam" x1="105.3" y1="210" x2="105.3" y2="256"/><circle class="w-pin" cx="103.6" cy="180" r="8"/></g><g class="L" data-layer="3"><circle class="w-bead" cx="108.6" cy="19.5" r="3.2"/><circle class="w-pin" cx="108.6" cy="19.5" r="6"/><circle class="w-bead" cx="108.6" cy="153.5" r="3.2"/><circle class="w-pin" cx="108.6" cy="153.5" r="6"/><circle class="w-bead" cx="108.6" cy="245.5" r="3.2"/><circle class="w-pin" cx="108.6" cy="245.5" r="6"/></g><g class="L" data-layer="5"><line class="w-wrap" x1="97.3" y1="12" x2="97.3" y2="62"/><line class="w-wrap" x1="97.3" y1="147" x2="97.3" y2="200"/><line class="w-wrap" x1="97.3" y1="210" x2="97.3" y2="257"/><circle class="w-pin" cx="97.3" cy="172" r="8"/></g><g class="L" data-layer="7"><rect class="w-gap" x="84" y="12" width="12" height="50"/><path class="w-flow" d="M90,62 V12"/><rect class="w-gap" x="84" y="146" width="12" height="54"/><path class="w-flow" d="M90,200 V146"/><rect class="w-gap" x="84" y="210" width="12" height="47"/><path class="w-flow" d="M90,257 V210"/><line class="w-vent" x1="70" y1="258.5" x2="96" y2="258.5"/><circle class="w-pin" cx="90" cy="180" r="8"/></g><g class="L" data-layer="8"><g clip-path="url(#s-k0)"><polygon class="w-side" points="79,-4 84,-4 77,26 72,26"/><polygon class="w-side" points="79,22 84,22 77,52 72,52"/><polygon class="w-side" points="79,48 84,48 77,78 72,78"/></g><g clip-path="url(#s-k1)"><polygon class="w-side" points="79,140 84,140 77,170 72,170"/><polygon class="w-side" points="79,166 84,166 77,196 72,196"/><polygon class="w-side" points="79,192 84,192 77,222 72,222"/></g><g clip-path="url(#s-k2)"><polygon class="w-side" points="79,202 84,202 77,232 72,232"/><polygon class="w-side" points="79,228 84,228 77,258 72,258"/><polygon class="w-side" points="79,254 84,254 77,284 72,284"/></g><circle class="w-pin" cx="78" cy="178" r="8"/></g><g class="L" data-layer="6"><polygon class="w-sill" points="108.6,146 156,146 156,134 108.6,142"/><rect class="w-sill" x="156" y="126" width="8.6" height="20"/><polyline class="w-flash" points="164.6,124.8 155,124.8 155,133 108.6,141 97,143 97,168"/><g class="w-unit"><rect class="w-wood2" x="114" y="116" width="36" height="16"/><rect class="w-wood" x="120" y="132" width="5" height="7.4"/><rect class="w-wood" x="142" y="132" width="5" height="3.7"/><polygon class="w-wood2" points="70,133.5 114,124 114,129 70,138.5"/><rect class="w-igu" x="129.5" y="70" width="5" height="46"/><line class="w-glass" x1="118" y1="70" x2="118" y2="116"/><line class="w-glass" x1="146" y1="70" x2="146" y2="116"/></g><circle class="w-pin" cx="150" cy="137" r="8"/></g></svg><figcaption>In section, outside at left</figcaption></figure>
-    </div>
-  </div>
-
-  <div class="band" id="details">
-    <div class="cols wide">
-      <div>
-        <h3>Built to dry</h3>
-        <p>Every wall meets water eventually. What matters is where it goes next. SkyPac cladding stands off the wall on a rainscreen, a ventilated gap that lets water drain and air move.</p>
-        <p>Water needs almost no room: drainage has been demonstrated in gaps under one millimeter.<sup>1</sup> Air needs more. Building scientist Joseph Lstiburek makes the case for a vented space of about 3/8 inch,<sup>2</sup> because moving air is what dries a wall.</p>
-        <p>A dry wall combats mold and rot, and lasts longer. With a sealed envelope and steady humidity, it also guards against ghost marking: faint gray stripes that trace the framing behind a wall or ceiling. Studs run colder than the insulated bays, and airborne dust and soot settle on the cold stripes.<sup>3</sup></p>
-      </div>
-      <div>
-        <h3>Sheathed in plywood</h3>
-        <p>Our walls are sheathed in plywood, not OSB. The two panels do the same structural job but behave very differently once wet.</p>
-        <p>Vapor permeance is measured in perms: higher means more vapor gets through. Tested dry, 3/8 inch plywood and OSB both rate about 0.75. Tested wet, plywood opens to 3.5 and OSB to 2. At saturation, plywood reaches 14 to 20 while OSB stays near 3.<sup>4</sup> Plywood lets more vapor through the wetter it gets, exactly when a wall needs it.</p>
-        <p>OSB takes longer to soak, but once water is in, it is slow to leave, and the edges swell and stay swollen.<sup>5</sup> In a side by side climate chamber test at the University of Waterloo, the OSB came out covered in mold. The plywood came out pristine.<sup>6</sup></p>
-        <p>Plywood costs more. It is one of the first places we choose to spend.</p>
-      </div>
-      <div>
-        <h3>Membranes that adapt</h3>
-        <p>Inside, a smart vapor retarder changes with the weather. One widely used membrane tests at 1 perm in dry air and 12 or more in damp,<sup>4</sup> so it holds moisture back in winter and opens to let the wall dry when humidity climbs.</p>
-        <p>Outside, the housewrap turns away liquid water and lets vapor pass. One common wrap tests at 58 perms,<sup>4</sup> far more open than the plywood behind it, so the sheathing can dry toward the gap.</p>
-      </div>
-      <div>
-        <h3>Tight by design</h3>
-        <p>Air leaks carry moisture, dust and heat through a house. SkyPac homes are built exceptionally tight, and the difference is in the details: how a window is sealed, where each bead of caulk is run, how every penetration is closed before it is covered.</p>
-        <p>Here is why the caulk matters. Over one heating season in a cold climate, about a third of a quart of water diffuses through a full sheet of drywall. Put a one inch square hole in that sheet and air leakage carries about 30 quarts through it.<sup>7</sup> Building Science Corporation has since rerun the math for a Chicago winter and put the leak nearer 95 quarts.<sup>8</sup></p>
-        <p>Few people will ever see that work. Every owner will feel it.</p>
-      </div>
-      <div>
-        <h3>Fresh air on purpose</h3>
-        <p>A tight home has to breathe by design. Controlled ventilation brings fresh air in and carries stale air out, and indoor humidity is held steady.</p>
-        <p>The EPA advises keeping indoor relative humidity below 60 percent, ideally between 30 and 50.<sup>9</sup></p>
-        <p>Together they keep indoor air clean and mitigate the risk of mold, which makes a home healthy to live in.</p>
-      </div>
-      <div>
-        <h3>From the ground up</h3>
-        <p>Concrete is thirsty. In theory, capillary action can pull water about six miles up through it.<sup>10</sup> So a capillary break sits under every bottom plate, with a bead of sealant beneath it and another above.</p>
-        <p>Windows get the same suspicion. Each sill slopes outward and ends in a back dam, so water drains out, away from the framing.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="plate short deep drift" id="technology">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/tech-p.webp">
-      <img src="img/tech-l.webp" alt="SkyPac job dashboard sheets seen at an angle, one with the SkyPac logo in its header, with every figure masked" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Technology</h2>
-      <p class="lead">SkyPac couples sophisticated scheduling and review software with proprietary tracking systems.</p>
-      <p class="quiet">Pictured: SkyPac&rsquo;s own job dashboards.</p>
-    </div>
-  </div>
-
-  <div class="band ink" id="tech-detail">
-    <div class="cols wide">
-      <div>
-        <h3>Proprietary tracking</h3>
-        <p>SkyPac tracks every job in a system designed in house: the budget by cost code, every change order and every draw, all tied to a single set of numbers. Invoices, the budget and the pay application are reconciled to the penny before a draw request goes out.</p>
-      </div>
-      <div>
-        <h3>A timeline for every job</h3>
-        <p>SkyPac builds each job&rsquo;s schedule in dedicated scheduling software, with every trade and every duration on a single timeline.</p>
-      </div>
-      <div>
-        <h3>Plans vetted sheet by sheet</h3>
-        <p>Before ground breaks, SkyPac reviews every sheet of the plan set in dedicated review software, with a separate pass for water and the building enclosure. AI helps vet complex, dense plan sets, highlighting every possible discrepancy or error for further investigation. Conflicts go to the design team before they reach the field.</p>
-      </div>
-      <div>
-        <h3>Budgets and draws, double checked</h3>
-        <p>Specially designed AI workflows double check every budget and every draw package before it goes out. They serve as a failsafe: the judgment and the decisions stay with&nbsp;us.</p>
-      </div>
-      <div>
-        <h3>Prices and lessons on file</h3>
-        <p>SkyPac keeps a database of what suppliers and subcontractors actually charge and checks every new quote against it. After each phase, what the field learned is written into the checklist for the same phase of the next job.</p>
-      </div>
-    </div>
-    <p><a class="link" href="#projects">See the work</a></p>
-  </div>
-
-  <div class="band ink fine" id="sources">
-    <div class="srcs-wrap">
-      <h3>Building science sources</h3>
-      <ol class="srcs">
-        <li><a href="https://www.buildingscience.com/documents/reports/rr-0905-modeled-measured-drainage-thermal-x/view" target="_blank" rel="noopener">RR-0905: Modeled and Measured Drainage, Storage and Drying Behind Cladding Systems</a>. John Straube and Jonathan Smegal, Building Science Corporation.</li>
-        <li><a href="https://www.jlconline.com/how-to/insulation/is-rain-screen-siding-worth-the-effort_o/" target="_blank" rel="noopener">Is Rain-Screen Siding Worth the Effort?</a>. Journal of Light Construction.</li>
-        <li><a href="https://inspectapedia.com/interiors/Thermal_Tracking_Lines.php" target="_blank" rel="noopener">Thermal Tracking Lines</a>. InspectAPedia.</li>
-        <li><a href="https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/building_materials_property_table.pdf" target="_blank" rel="noopener">Building Materials Property Table</a>. Building Science Corporation, for the U.S. Department of Energy.</li>
-        <li><a href="https://www.umass.edu/bct/publications/articles/choosing-between-oriented-strandboard-and-plywood/" target="_blank" rel="noopener">Choosing Between Oriented Strandboard and Plywood</a>. Paul Fisette, University of Massachusetts Amherst.</li>
-        <li><a href="https://www.buildingscience.com/documents/building-science-insights-newsletters/bsi-061-inward-drive-outward-drying" target="_blank" rel="noopener">BSI-061: Inward Drive, Outward Drying</a>. Building Science Corporation.</li>
-        <li><a href="https://www.wconline.com/articles/92419-the-moisture-threat-of-infiltration-to-the-building-envelope" target="_blank" rel="noopener">The Moisture Threat of Infiltration to the Building Envelope</a>. Walls &amp; Ceilings.</li>
-        <li><a href="https://buildingscience.com/documents/building-science-insights/bsi-149-slide-rules-pocket-protectors-cigarettes-and-iconic" target="_blank" rel="noopener">BSI-149: Slide Rules, Pocket Protectors, Cigarettes and an Iconic Building Science Image</a>. Building Science Corporation.</li>
-        <li><a href="https://www.epa.gov/mold/mold-course-chapter-9" target="_blank" rel="noopener">Mold Course, Chapter 9</a>. U.S. Environmental Protection Agency.</li>
-        <li><a href="https://greenbuildingadvisor.com/article/adding-a-capillary-break-to-the-footing" target="_blank" rel="noopener">Adding a Capillary Break to the Footing</a>. Green Building Advisor.</li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="view-projects" hidden>
-  <div class="plate drift">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/front-duo-p.webp">
-      <img src="img/front-duo-l.webp" alt="Front of the Christian Drive Residence in Linda Vista, Missoula, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h1>Christian Drive Residence</h1>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Custom home</dd></div>
-        <div><dt>Location</dt><dd>Linda Vista, Missoula</dd></div>
-        <div><dt>Size</dt><dd>2,397 sq ft</dd></div>
-        <div><dt>Role</dt><dd>Integrated construction manager</dd></div>
-        <div><dt>Status</dt><dd>Completed 2024</dd></div>
-      </dl>
-      <p><button class="btn" id="openGallery" type="button" data-gallery="christian">View 6 photos</button></p>
-    </div>
-  </div>
-
-  <div class="plate short">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/haidyn-frame-duo-p.webp">
-      <img src="img/haidyn-frame-duo-l.webp" alt="Framed walls and roof trusses at one of the Haidyn Residences" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Haidyn Residences</h2>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Two spec homes</dd></div>
-        <div><dt>Location</dt><dd>Linda Vista, Missoula</dd></div>
-        <div><dt>Size</dt><dd>1,873 sq ft each</dd></div>
-        <div><dt>Role</dt><dd>Developer and general contractor</dd></div>
-        <div><dt>Status</dt><dd>Under construction</dd></div>
-      </dl>
-      <p class="quiet">Two homes going up side by side on Haidyn Way. Pictured: roof trusses going on, November 2026.</p>
-      <p><button class="btn" type="button" data-gallery="haidyn">View 3 photos</button></p>
-    </div>
-  </div>
-
-  <div class="plate short">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/n1w-duo-p.webp">
-      <img src="img/n1w-duo-l.webp" alt="North 1st Street seen from across the road: a new gabled building wrapped in weather barrier beside a historic brick storefront, under a wide sky, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>North 1st Street Condominiums</h2>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Condominiums</dd></div>
-        <div><dt>Location</dt><dd>Missoula</dd></div>
-        <div><dt>Size</dt><dd>Four units, 3,248 sq ft</dd></div>
-        <div><dt>Role</dt><dd>General contractor</dd></div>
-        <div><dt>Status</dt><dd>Under construction</dd></div>
-      </dl>
-      <p class="quiet">Four condominiums in two buildings, in a historic district with demanding lot constraints. Pictured: weather barrier on.</p>
-      <p><button class="btn" type="button" data-gallery="n1">View 4 images</button></p>
-    </div>
-  </div>
-  <div class="plate short pano">
-    <picture>
-      <img src="img/private-render-duo.webp" alt="Rendering of the home: board and batten siding, stone at the base, a timber-framed entry and a garage wing, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Private Residence</h2>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Custom home</dd></div>
-        <div><dt>Location</dt><dd>Missoula County</dd></div>
-        <div><dt>Size</dt><dd>4,394 sq ft</dd></div>
-        <div><dt>Role</dt><dd>Integrated construction manager</dd></div>
-        <div><dt>Status</dt><dd>Under construction</dd></div>
-      </dl>
-      <p class="quiet">A custom home with 25-foot vaulted ceilings, built for a private client. Pictured: a rendering of the finished home.</p>
-      <p><button class="btn" type="button" data-gallery="private">View 5 images</button></p>
-    </div>
-  </div>
-  <div class="plate short">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/pattee-duo-p.webp">
-      <img src="img/pattee-duo-l.webp" alt="A two-story building with a brick entry, with a skid steer and a small excavator working beside it, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Pattee Creek Condominiums</h2>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Condominium conversion</dd></div>
-        <div><dt>Location</dt><dd>Missoula</dd></div>
-        <div><dt>Size</dt><dd>Six units, about 6,000 sq ft</dd></div>
-        <div><dt>Role</dt><dd>Co-developer and general contractor</dd></div>
-        <div><dt>Status</dt><dd>Under renovation</dd></div>
-      </dl>
-      <p class="quiet">A six-unit building renovated and converted to condominiums. Pictured: site work under way, November 2026.</p>
-      <p><button class="btn" type="button" data-gallery="pattee">View the photo</button></p>
-    </div>
-  </div>
-  <div class="plate short pano">
-    <picture>
-      <img src="img/halle-front-duo.webp" alt="Rendering of the home: lap siding, stone at the base and wood garage doors under a low gabled roof, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Halle Drive Residence</h2>
-      <dl class="facts five">
-        <div><dt>Type</dt><dd>Spec home</dd></div>
-        <div><dt>Location</dt><dd>Linda Vista, Missoula</dd></div>
-        <div><dt>Size</dt><dd>3,488 sq ft</dd></div>
-        <div><dt>Role</dt><dd>Developer and general contractor</dd></div>
-        <div><dt>Status</dt><dd>In design</dd></div>
-      </dl>
-      <p class="quiet">A walkout basement with unobstructed views. Pictured: a rendering of the front.</p>
-      <p><button class="btn" type="button" data-gallery="halle">View 3 renderings</button></p>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="view-homesite" hidden>
-  <div class="plate drift vista">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/view1-p.webp">
-      <img src="img/view1-l.webp" alt="A green valley with a few houses and a gravel road, forested hills behind it and a snow-capped peak under broken clouds" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h1>Available homesites</h1>
-      <p>Three homesites available in the Linda Vista neighborhood of Missoula.</p>
-      <p class="quiet">Pictured: the view from Lots 50 and 51.</p>
-      <p class="jumps"><button class="btn" type="button" data-jump="lot94">Lot 94</button><button class="btn" type="button" data-jump="lot50">Lot 50</button><button class="btn" type="button" data-jump="lot51">Lot 51</button></p>
-    </div>
-  </div>
-
-  <div class="plate short" id="lot94">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/lot94-duo-p.webp">
-      <img src="img/lot94-duo-l.webp" alt="Lot 94 from the air with its boundary outlined, beside Travis Drive, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Lot 94, Travis Drive</h2>
-      <dl class="facts five">
-        <div><dt>Location</dt><dd>Travis Drive, Linda Vista</dd></div>
-        <div><dt>Size</dt><dd>0.45 acre</dd></div>
-        <div><dt>Terrain</dt><dd>Flat</dd></div>
-        <div><dt>Status</dt><dd>Available</dd></div>
-      </dl>
-      <p class="quiet">The largest of the three: flat, and nearly half an acre. Perfect for a large family that prioritizes usable back yard space.</p>
-      <p class="jumps"><button class="btn" type="button" data-gallery="lot94">View 2 maps</button><button class="btn" type="button" data-jump="contact" data-ask="Lot 94 on Travis Drive">Ask about Lot 94</button></p>
-    </div>
-  </div>
-
-  <div class="plate short" id="lot50">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/lot50-duo-p.webp">
-      <img src="img/lot50-duo-l.webp" alt="Lot 50 from the air with its boundary outlined, beside Sophie Drive, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Lot 50, Sophie Drive</h2>
-      <dl class="facts five">
-        <div><dt>Location</dt><dd>Sophie Drive, Linda Vista</dd></div>
-        <div><dt>Size</dt><dd>0.27 acre</dd></div>
-        <div><dt>Terrain</dt><dd>Gently sloped</dd></div>
-        <div><dt>Views</dt><dd>Lolo Peak, Oxbow Ranch, Bitterroot River</dd></div>
-        <div><dt>Status</dt><dd>Available</dd></div>
-      </dl>
-      <p class="quiet">Gently sloped, with unobstructed views of Lolo Peak, the Oxbow Ranch and the Bitterroot River.</p>
-      <p class="jumps"><button class="btn" type="button" data-gallery="lot50">View 4 images</button><button class="btn" type="button" data-jump="contact" data-ask="Lot 50 on Sophie Drive">Ask about Lot 50</button></p>
-    </div>
-  </div>
-
-  <div class="plate short" id="lot51">
-    <picture>
-      <source media="(orientation:portrait)" srcset="img/lot51-duo-p.webp">
-      <img src="img/lot51-duo-l.webp" alt="Lot 51 from the air with its boundary outlined, beside Sophie Drive, in navy tones" loading="lazy">
-    </picture>
-    <div class="inner">
-      <h2>Lot 51, Sophie Drive</h2>
-      <dl class="facts five">
-        <div><dt>Location</dt><dd>Sophie Drive, Linda Vista</dd></div>
-        <div><dt>Size</dt><dd>0.24 acre</dd></div>
-        <div><dt>Terrain</dt><dd>Gently sloped</dd></div>
-        <div><dt>Views</dt><dd>Lolo Peak, Oxbow Ranch, Bitterroot River</dd></div>
-        <div><dt>Status</dt><dd>Available</dd></div>
-      </dl>
-      <p class="quiet">Next door to Lot 50, with the same gentle slope and the same unobstructed views.</p>
-      <p class="jumps"><button class="btn" type="button" data-gallery="lot51">View 4 images</button><button class="btn" type="button" data-jump="contact" data-ask="Lot 51 on Sophie Drive">Ask about Lot 51</button></p>
+      <p><a class="link" href="/projects/">See the project</a></p>
     </div>
   </div>
 </section>
@@ -1133,8 +678,8 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 <footer>
   <section class="plate deep" id="contact" aria-labelledby="contactH">
     <picture>
-      <source media="(orientation:portrait)" srcset="img/aerial-duo-p.webp">
-      <img src="img/aerial-duo-l.webp" alt="Linda Vista in Missoula from the air, with snow on the mountains behind, shown in navy tones" loading="lazy">
+      <source media="(orientation:portrait)" srcset="/img/aerial-duo-p.webp">
+      <img src="/img/aerial-duo-l.webp" alt="Linda Vista in Missoula from the air, with snow on the mountains behind, shown in navy tones" loading="lazy">
     </picture>
     <div class="inner">
       <h2 id="contactH">Start a conversation</h2>
@@ -1173,10 +718,10 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   <div class="close">
     <div class="foot">
       <div>
-        <a class="home" href="#home" aria-label="SkyPac, home"><svg viewBox="0 0 318 57" aria-hidden="true"><use href="#logo"/></svg></a>
+        <a class="home" href="/" aria-label="SkyPac, home"><svg viewBox="0 0 318 57" aria-hidden="true"><use href="#logo"/></svg></a>
         SkyPac Contracting LLC<br>PO Box 17251, Missoula, MT 59808
       </div>
-      <nav aria-label="Footer"><a href="#home">Home</a><a href="#about">About</a><a href="#approach">Approach</a><a href="#science">Science and technology</a><a href="#projects">Projects</a><a href="#homesite">Available homesites</a></nav>
+      <nav aria-label="Footer"><a href="/">Home</a><a href="/about/">About</a><a href="/approach/">Approach</a><a href="/science-and-technology/">Science and technology</a><a href="/projects/">Projects</a><a href="/homesites/">Available homesites</a></nav>
       <div>&copy; 2026 SkyPac Contracting LLC</div>
     </div>
   </div>
@@ -1202,25 +747,30 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   var ALIAS={contact:[null,'contact'],testimonials:['home','words'],words:['home','words'],developer:['about','developer'],architect:['about','architect'],cmar:['approach','method'],method:['approach','method'],scope:['approach','scope'],technology:['science','technology'],homesites:['homesite',null],lot94:['homesite','lot94'],lot50:['homesite','lot50'],lot51:['homesite','lot51']};
   var $=function(id){return document.getElementById(id)};
   var body=document.body, menu=$('menu'), menuBtn=$('menuBtn'), video=$('heroVideo');
+  /* On skypaccontracting.com each tab is its own page, so search engines can list each one: build/launch.py writes
+     the tab's name into data-page on <body> and leaves the other tabs out. Here, in one page, data-page is absent and
+     the hash names the tab, as it always has. */
+  var PAGE=body.getAttribute('data-page'), routed=false;
+  var URLS={home:'/',about:'/about/',approach:'/approach/',science:'/science-and-technology/',projects:'/projects/',homesite:'/homesites/'};
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* tabs: one view per hash */
   function route(){
-    var v=location.hash.slice(1), to=null, al=ALIAS[v]; if(al){ to=al[1]; v=al[0]||body.dataset.view; } if(VIEWS.indexOf(v)<0) v='home';
+    var v=location.hash.slice(1), to=null, al=ALIAS[v]; if(al){ to=al[1]; v=al[0]||body.dataset.view; } if(VIEWS.indexOf(v)<0) v=PAGE||'home';
+    if(PAGE&&v!==PAGE){ location.replace(URLS[v]+(to?'#'+to:'')); return; }       /* an old link such as /#about */
     body.dataset.view=v;
-    VIEWS.forEach(function(n){ $('view-'+n).hidden=(n!==v); });
+    VIEWS.forEach(function(n){ var el=$('view-'+n); if(el) el.hidden=(n!==v); });
     replay($('view-'+v)); replay(document.querySelector('footer'));
-    document.querySelectorAll('.menu nav a').forEach(function(a){
-      if(a.getAttribute('href')==='#'+v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
-    });
-    setMenu(false); if(to) $(to).scrollIntoView(); else window.scrollTo(0,0);
-    if(video.src){ if(v==='home') video.play().catch(function(){}); else video.pause(); }
+    current(v);
+    setMenu(false); if(to&&$(to)) $(to).scrollIntoView(); else if(!PAGE||routed) window.scrollTo(0,0);   /* a page keeps the place the browser restores */
+    routed=true;
+    if(video&&video.src){ if(v==='home') video.play().catch(function(){}); else video.pause(); }
     opened();
   }
   /* menu: opens as a circle growing out of the button; the photograph behind it follows the link in hand */
   var arts=[].slice.call(menu.querySelectorAll('.menu-art i')), links=[].slice.call(menu.querySelectorAll('nav a'));
   var behind=[document.querySelector('main'),document.querySelector('footer')];
-  function artUrl(i){ return 'img/m-'+i.getAttribute('data-art')+'-'+(matchMedia('(orientation:portrait)').matches?'p':'l')+'.webp'; }
+  function artUrl(i){ return '/img/m-'+i.getAttribute('data-art')+'-'+(matchMedia('(orientation:portrait)').matches?'p':'l')+'.webp'; }
   function paint(i){ if(!i._set){ i._set=1; i.style.backgroundImage='url('+artUrl(i)+')'; } }      /* each photograph loads when first wanted */
   function art(k){ arts.forEach(function(i){ var on=i.getAttribute('data-art')===k; if(on) paint(i); i.classList.toggle('on',on); }); }
   function here(){ return body.dataset.view; }
@@ -1241,12 +791,28 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   menuBtn.addEventListener('click',function(){ setMenu(!menu.classList.contains('open')); });
   ['pointerenter','touchstart','focus'].forEach(function(n){ menuBtn.addEventListener(n,warm,{passive:true}); });
   links.forEach(function(a){
-    var k=a.getAttribute('href').slice(1);
+    var k=a.getAttribute('data-tab');
     a.addEventListener('mouseenter',function(){ art(k); }); a.addEventListener('focus',function(){ art(k); });
-    a.addEventListener('click',function(){ if('#'+k===location.hash){ setMenu(false); window.scrollTo(0,0); } });   /* the tab already open: just close */
+    a.addEventListener('click',function(e){
+      if(PAGE){                                       /* to another page: the next page closes this menu over itself */
+        if(k!==PAGE&&!(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)) try{ current(k); sessionStorage.setItem('skypacMenu',JSON.stringify(['--mx','--my','--mr'].map(function(n){ return menu.style.getPropertyValue(n); }))); }catch(err){}
+        return;
+      }
+      if('#'+k===location.hash){ setMenu(false); window.scrollTo(0,0); }       /* the tab already open: just close */
+    });
   });
   menu.querySelector('nav').addEventListener('mouseleave',function(){ art(here()); });
-  document.querySelector('.brand').addEventListener('click',function(){ if(location.hash==='#home'){ setMenu(false); window.scrollTo(0,0); } });
+  function current(v){ links.forEach(function(a){ if(a.getAttribute('data-tab')===v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); }); }
+  addEventListener('pageshow',function(e){                                    /* back to a page the browser kept */
+    if(!PAGE||!e.persisted) return;
+    menu.style.transition='none'; setMenu(false); current(PAGE); void menu.offsetWidth; menu.style.transition='';
+  });
+  document.querySelector('.brand').addEventListener('click',function(){ if(!PAGE&&location.hash==='#home'){ setMenu(false); window.scrollTo(0,0); } });
+  if(PAGE) document.addEventListener('click',function(e){                     /* a link to the page already open: close and go to the top */
+    var a=e.target.closest?e.target.closest('a[href]'):null;
+    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button) return;
+    if(a.origin===location.origin&&a.pathname===location.pathname&&!a.hash){ e.preventDefault(); setMenu(false); window.scrollTo(0,0); }
+  });
   addEventListener('resize',function(){ if(menu.classList.contains('open')) aim(); });
   addEventListener('hashchange',route);
 
@@ -1258,30 +824,30 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   var SHOTS=[['Front elevation','Christian Drive Residence'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Weather barrier on','North 1st Street Condominiums'],['Stem wall forms','Private Residence'],['The side walkway','North 1st Street Condominiums']];
   var MOON=[7,13,19,25,32,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
   function showShot(i){ if(i===shot||!SHOTS[i]) return; shot=i; $('shotName').textContent=SHOTS[i][0]; $('shotJob').textContent=SHOTS[i][1]; $('moonCut').style.transform='translateX('+MOON[i]+'px)'; }
-  video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
+  if(video) video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
   function loadFilm(){
-    if(calm||!window.fetch||!window.URL) return;
+    if(!video||calm||!window.fetch||!window.URL) return;
     /* three copies of the same cut: upright for phones, 1600 wide for small landscape screens, 1920 wide for a
        desktop or laptop screen, where the smaller one was stretched and looked soft */
     var big=matchMedia('(min-width:1100px)').matches&&innerWidth*(window.devicePixelRatio||1)>1700;
-    var src=matchMedia('(orientation: portrait)').matches?'video/hero-p.mp4':big?'video/hero-xl.mp4':'video/hero-l.mp4';
+    var src=matchMedia('(orientation: portrait)').matches?'/video/hero-p.mp4':big?'/video/hero-xl.mp4':'/video/hero-l.mp4';
     fetch(src).then(function(r){ if(!r.ok) throw new Error('no film'); return r.blob(); })
-      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'video/mp4'})); return video.play(); })
+      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return video.play(); })
       .then(function(){ video.classList.add('on'); if(body.dataset.view!=='home') video.pause(); })
       .catch(function(){ /* the still stays up */ });
   }
 
   /* gallery */
   var SETS={
-    christian:['Christian Drive Residence',[['img/front-l.webp','Front elevation'],['img/great-l.webp','Great room'],['img/kitchen-l.webp','Kitchen'],['img/entry-l.webp','Entry and dining'],['img/rear-l.webp','Covered patio'],['img/aerial-l.webp','Linda Vista from the air']]],
-    haidyn:['Haidyn Residences',[['img/g-haidyn-framing.webp','Roof trusses going on, November 2026'],['img/g-haidyn-deck.webp','On the subfloor, November 2026',1],['img/g-haidyn-foundation.webp','Foundation walls, November 2026']]],
-    n1:['North 1st Street Condominiums',[['img/g-n1-front.webp','The street front, weather barrier on',1],['img/g-n1-street.webp','Weather barrier on, October 2026'],['img/g-n1-gap.webp','The gap to the building next door',1],['img/g-n1-render.webp','Rendering of the finished building',1]]],
-    private:['Private Residence',[['img/g-private-render.webp','Rendering of the finished home',1],['img/g-private-ground.webp','Breaking ground, October 2026'],['img/g-private-forms.webp','Stem wall forms, November 2026'],['img/g-private-forms2.webp','The forms from the far corner'],['img/g-private-rebar.webp','Reinforcing steel, November 2026',1]]],
-    pattee:['Pattee Creek Condominiums',[['img/g-pattee-lot.webp','Site work under way, November 2026']]],
-    lot94:['Lot 94, Travis Drive',[['img/g-lot94-map.webp','Lot 94, outlined. Map: Montana Cadastral.',1],['img/g-lot94-where.webp','Where Lot 94 sits, on Travis Drive. Map: Montana Cadastral.',1]]],
-    lot50:['Lot 50, Sophie Drive',[['img/g-lots-view1.webp','The view from Lots 50 and 51'],['img/g-lots-view2.webp','The view from Lots 50 and 51, along the valley'],['img/g-lot50-map.webp','Lot 50, outlined. Map: Montana Cadastral.',1],['img/g-lot50-where.webp','Where Lot 50 sits, on Sophie Drive. Map: Montana Cadastral.',1]]],
-    lot51:['Lot 51, Sophie Drive',[['img/g-lots-view1.webp','The view from Lots 50 and 51'],['img/g-lots-view2.webp','The view from Lots 50 and 51, along the valley'],['img/g-lot51-map.webp','Lot 51, outlined. Map: Montana Cadastral.',1],['img/g-lot51-where.webp','Where Lot 51 sits, on Sophie Drive. Map: Montana Cadastral.',1]]],
-    halle:['Halle Drive Residence',[['img/g-halle-front.webp','Front elevation, rendering',1],['img/g-halle-rear.webp','Rear elevation, rendering',1],['img/g-halle-kitchen.webp','Kitchen, rendering',1]]]
+    christian:['Christian Drive Residence',[['/img/front-l.webp','Front elevation'],['/img/great-l.webp','Great room'],['/img/kitchen-l.webp','Kitchen'],['/img/entry-l.webp','Entry and dining'],['/img/rear-l.webp','Covered patio'],['/img/aerial-l.webp','Linda Vista from the air']]],
+    haidyn:['Haidyn Residences',[['/img/g-haidyn-framing.webp','Roof trusses going on, November 2026'],['/img/g-haidyn-deck.webp','On the subfloor, November 2026',1],['/img/g-haidyn-foundation.webp','Foundation walls, November 2026']]],
+    n1:['North 1st Street Condominiums',[['/img/g-n1-front.webp','The street front, weather barrier on',1],['/img/g-n1-street.webp','Weather barrier on, October 2026'],['/img/g-n1-gap.webp','The gap to the building next door',1],['/img/g-n1-render.webp','Rendering of the finished building',1]]],
+    private:['Private Residence',[['/img/g-private-render.webp','Rendering of the finished home',1],['/img/g-private-ground.webp','Breaking ground, October 2026'],['/img/g-private-forms.webp','Stem wall forms, November 2026'],['/img/g-private-forms2.webp','The forms from the far corner'],['/img/g-private-rebar.webp','Reinforcing steel, November 2026',1]]],
+    pattee:['Pattee Creek Condominiums',[['/img/g-pattee-lot.webp','Site work under way, November 2026']]],
+    lot94:['Lot 94, Travis Drive',[['/img/g-lot94-map.webp','Lot 94, outlined. Map: Montana Cadastral.',1],['/img/g-lot94-where.webp','Where Lot 94 sits, on Travis Drive. Map: Montana Cadastral.',1]]],
+    lot50:['Lot 50, Sophie Drive',[['/img/g-lots-view1.webp','The view from Lots 50 and 51'],['/img/g-lots-view2.webp','The view from Lots 50 and 51, along the valley'],['/img/g-lot50-map.webp','Lot 50, outlined. Map: Montana Cadastral.',1],['/img/g-lot50-where.webp','Where Lot 50 sits, on Sophie Drive. Map: Montana Cadastral.',1]]],
+    lot51:['Lot 51, Sophie Drive',[['/img/g-lots-view1.webp','The view from Lots 50 and 51'],['/img/g-lots-view2.webp','The view from Lots 50 and 51, along the valley'],['/img/g-lot51-map.webp','Lot 51, outlined. Map: Montana Cadastral.',1],['/img/g-lot51-where.webp','Where Lot 51 sits, on Sophie Drive. Map: Montana Cadastral.',1]]],
+    halle:['Halle Drive Residence',[['/img/g-halle-front.webp','Front elevation, rendering',1],['/img/g-halle-rear.webp','Rear elevation, rendering',1],['/img/g-halle-kitchen.webp','Kitchen, rendering',1]]]
   };
   var gal=$('gallery'), gi=0, set=SETS.christian, opener=null, tx=null;
   function showPhoto(i){ var s=set[1], im=$('galImg'); gi=(i+s.length)%s.length; im.src=(s[gi][3]&&matchMedia('(orientation:portrait)').matches)?s[gi][3]:s[gi][0]; im.alt=s[gi][1]+', '+set[0]; im.style.objectFit=s[gi][2]?'contain':'';
@@ -1414,7 +980,8 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     ['Rainscreen','Battens hold the siding off the wall. Water drains down the gap behind it and air moves up, so the assembly can dry.'],
     ['Siding','The cladding takes the weather first. Everything behind it is built to drain and dry.'],
     ['Inside','Insulation fills the cavities. A smart vapor retarder behind the drywall slows moisture in winter and opens to let the wall dry when conditions change.']];
-  var wall=$('wall'), wLayers=[].slice.call(wall.querySelectorAll('.L')), wChips=[].slice.call(wall.querySelectorAll('.chip')),
+  (function(){ var wall=$('wall'); if(!wall) return;
+  var wLayers=[].slice.call(wall.querySelectorAll('.L')), wChips=[].slice.call(wall.querySelectorAll('.chip')),
       wPeel=[].slice.call(wall.querySelectorAll('[data-peel]')), wStep=0;
   function showWall(k){
     wStep=k; var all=!k, top=all?9:k;
@@ -1433,6 +1000,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   wLayers.forEach(function(g){ g.addEventListener('click',function(){ showWall(+g.getAttribute('data-layer')); }); });
   $('wallNext').addEventListener('click',function(){ showWall(wStep+1); });
   $('wallAll').addEventListener('click',function(){ showWall(0); $('wallNext').focus(); });
+  })();
 
   /* scope builder: development runs in order, so one choice sets where SkyPac comes in and everything after it follows.
      The lit and dimmed rows are CSS. This rewrites what Design, Permitting and Construction say for the chosen start,
@@ -1473,17 +1041,17 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   }
   starts.forEach(function(r){ r.addEventListener('change',function(){ scopeRender(true); }); });
   noteField.addEventListener('input',function(){ noteField.removeAttribute('data-auto'); });
-  $('scopeGo').addEventListener('click',function(){
+  if($('scopeGo')) $('scopeGo').addEventListener('click',function(){
     var k=startAt();
     if(!noteField.value.trim()||noteField.hasAttribute('data-auto')){ noteField.value='Scope I have in mind: start SkyPac at '+PHASE[k]+'. In scope: '+PHASE.slice(k).join(', ')+'.'; noteField.setAttribute('data-auto','1'); }
   });
-  scopeRender(false);
+  if($('scope')) scopeRender(false);
 
   /* running tally: square feet improved to date. The total is the sum of the list in data-sqft, so a new project is one
      more number in that list. Where motion is allowed the figure counts up each time its column comes on screen. */
-  var tally=$('tally'), sqft=tally.getAttribute('data-sqft').split(/\s+/).reduce(function(a,b){ return a+(+b||0); },0), tallyRun=0;
+  var tally=$('tally'), sqft=tally?tally.getAttribute('data-sqft').split(/\s+/).reduce(function(a,b){ return a+(+b||0); },0):0, tallyRun=0;
   function feet(n){ return Math.round(n).toLocaleString('en-US'); }
-  tally.textContent=feet(sqft);
+  if(tally){ tally.textContent=feet(sqft);
   tally.parentNode._count=function(){
     var run=++tallyRun, t0=0;
     tally.textContent='0';
@@ -1494,7 +1062,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
       tally.textContent=feet(sqft*(1-Math.pow(1-p,3)));
       if(p<1) requestAnimationFrame(step);
     });
-  };
+  }; }
 
   /* scroll motion, in both directions. Headlines and lead sentences are split into words. Every block has a waiting
      place just off its real one: 34px low when it will come in from below, 34px high when it will come back from above.
@@ -1595,7 +1163,8 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     };
   }
 
-  route(); loadFilm();
+  route();
+  if(document.readyState==='complete') loadFilm(); else addEventListener('load',loadFilm);
 })();
 </script>
 </body>
