@@ -814,7 +814,6 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     loadFilm();
   }
   function fitStill(){ if(stillRun&&!video.classList.contains('on')&&still.clientWidth&&stillRun.effect&&stillRun.effect.setKeyframes) stillRun.effect.setKeyframes(stillFrames()); }
-  function once(el,name){ return new Promise(function(ok,no){ el.addEventListener(name,ok,{once:true}); el.addEventListener('error',no,{once:true}); }); }
   function seek(t){ return new Promise(function(ok){ if(t<.04) return ok(); var late=setTimeout(ok,800); video.addEventListener('seeked',function(){ clearTimeout(late); ok(); },{once:true}); video.currentTime=t; }); }
   function loadFilm(){
     if(!video||calm||filmAsked||!window.fetch||!window.URL) return;
@@ -824,16 +823,16 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     var big=matchMedia('(min-width:1100px)').matches&&innerWidth*(window.devicePixelRatio||1)>1700;
     var src=matchMedia('(orientation: portrait)').matches?'/video/hero-p.mp4':big?'/video/hero-xl.mp4':'/video/hero-l.mp4';
     fetch(src).then(function(r){ if(!r.ok) throw new Error('no film'); return r.blob(); })
-      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return once(video,'loadedmetadata'); })
-      .then(function(){                                 /* the film takes over at the still's moment */
+      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return video.play(); })   /* an iPhone loads nothing until play() */
+      .then(function(){                                 /* playing but not yet shown: set it to the still's moment, then fade it in */
         var t=stillRun?Math.min(stillRun.currentTime/1000,4.8):0, held=!!stillRun&&t<4.8;
         if(held) stillRun.pause();
-        return seek(t).then(function(){ return video.play(); }).then(function(){
+        return seek(t).then(function(){
           if(held){ stillRun.currentTime=video.currentTime*1000; stillRun.play(); }
           video.classList.add('on'); if(body.dataset.view!=='home') video.pause();
-        },function(e){ if(held) stillRun.play(); throw e; });
+        });
       })
-      .catch(function(){ /* the still stays up */ });
+      .catch(function(){ if(stillRun&&stillRun.playState==='paused') stillRun.play(); /* the still stays up */ });
   }
 
   /* gallery */
