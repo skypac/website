@@ -35,6 +35,7 @@
 addEventListener('pagereveal',function(e){
   var m=null; try{ m=JSON.parse(sessionStorage.getItem('skypacMenu')); sessionStorage.removeItem('skypacMenu'); }catch(x){}
   if(!e.viewTransition) return;
+  e.viewTransition.ready.catch(function(){});        /* a skipped transition rejects ready; that is expected, not an error */
   if(!m||!m[0]||matchMedia('(prefers-reduced-motion: reduce)').matches){ e.viewTransition.skipTransition(); return; }
   var r=document.documentElement.style; r.setProperty('--vt-x',m[0]); r.setProperty('--vt-y',m[1]); r.setProperty('--vt-r',m[2]);
 });
@@ -145,7 +146,7 @@ h3{font-size:1rem;font-weight:400;letter-spacing:.2em;line-height:1.4;color:var(
 .plate .inner{width:100%;display:grid;gap:clamp(14px,2.2vh,24px);
   padding:132px max(var(--gut),env(safe-area-inset-right)) calc(clamp(30px,6.5vh,68px) + env(safe-area-inset-bottom)) max(var(--gut),env(safe-area-inset-left))}
 .plate p{max-width:30em}
-.drift picture img{animation:drift 30s ease-in-out infinite alternate;transform-origin:58% 42%}
+.drift picture img{animation:drift 30s ease-in-out -7s infinite alternate;transform-origin:58% 42%}
 @keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.13) translate3d(-1.2%,-.8%,0)}}
 .facts{display:flex;flex-wrap:wrap;gap:6px clamp(22px,4vw,56px)}
 .facts div{display:grid}
@@ -178,7 +179,7 @@ h3{font-size:1rem;font-weight:400;letter-spacing:.2em;line-height:1.4;color:var(
 .reel svg{width:34px;height:34px;color:var(--gold-lt);flex:none}
 .reel span{display:block}
 @media (min-width:701px){.reel p{min-width:15em}}          /* the caption changes length with each shot; the column must not */
-#moonCut{transform:translateX(9px);transition:transform 1.2s ease}
+#moonCut{transform:translateX(7px);transition:transform 1.2s ease}
 @media (max-width:700px){.hero .inner{grid-template-columns:1fr}.reel{margin-top:10px}}
 
 /* bands */
@@ -577,7 +578,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   <div class="plate drift vista">
     <picture>
       <source media="(orientation:portrait)" srcset="/img/view1-p.webp">
-      <img src="/img/view1-l.webp" alt="The view from Lots 50 and 51 in Linda Vista, Missoula: a green valley with a few houses and a gravel road, forested hills behind it and a snow-capped peak under broken clouds" loading="lazy">
+      <img src="/img/view1-l.webp" alt="The view from Lots 50 and 51 in Linda Vista, Missoula: a green valley with a few houses and a gravel road, forested hills behind it and a snow-capped peak under broken clouds" fetchpriority="high">
     </picture>
     <div class="inner">
       <h1>Available homesites</h1>
@@ -736,6 +737,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     setMenu(false); if(to&&$(to)) $(to).scrollIntoView(); else if(!PAGE||routed) window.scrollTo(0,0);   /* a page keeps the place the browser restores */
     routed=true;
     if(video&&video.src){ if(v==='home') video.play().catch(function(){}); else video.pause(); }
+    if(v==='home'&&stillRun) fitStill();
     opened();
   }
   /* menu: opens as a circle growing out of the button; the photograph behind it follows the link in hand */
@@ -775,6 +777,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   menu.querySelector('nav').addEventListener('mouseleave',function(){ art(here()); });
   function current(v){ links.forEach(function(a){ if(a.getAttribute('data-tab')===v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); }); }
   addEventListener('pageshow',function(e){                                    /* back to a page the browser kept */
+    if(e.persisted&&video&&video.src&&body.dataset.view==='home') video.play().catch(function(){});
     if(!PAGE||!e.persisted) return;
     menu.style.transition='none'; setMenu(false); current(PAGE); void menu.offsetWidth; menu.style.transition='';
   });
@@ -797,15 +800,53 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   var MOON=[7,15,24,34,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
   function showShot(i){ if(i===shot||!SHOTS[i]) return; shot=i; $('shotName').textContent=SHOTS[i][0]; $('shotJob').textContent=SHOTS[i][1]; $('moonCut').style.transform='translateX('+MOON[i]+'px)'; }
   if(video) video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
+  /* The still under the film moves as the film's first shot moves, from the moment it shows, so that whenever the film
+     arrives it can take over without a jump (round 48; before, the still sat almost motionless under the openers' slow
+     CSS drift and the film faded in at another scale). The film's first frame is shot 1 a fifth of the way along its
+     move (build/film41.py posters), and the move is linear in the crop's centre and size (build/media.py film): here
+     it is a key frame every 0.2 s. The first shot leaves the film at 4.8 s; if the film has not come by then, the still
+     slows to a stop by 10.8 s and the film comes in at the second shot. */
+  var still=video?document.querySelector('.hero picture img'):null, stillRun=null, filmAsked=false;
+  var CROP={l:[[2142,2271,4284],[2330,2200,3900]],p:[[2950,3020,4000],[2980,2880,3700]]};   /* film41.py ST_L, ST_P: centre x, y, size */
+  function along(t){ var u=t-4.8; return t<4.8?.2+t/6:1+u/6-u*u/72; }                       /* how far along the move at t s */
+  function stillFrames(){
+    var o=(still.currentSrc?/-p\.webp/.test(still.currentSrc):matchMedia('(orientation: portrait)').matches)?'p':'l';
+    var a=CROP[o][0], b=CROP[o][1], shown=Math.max(still.clientWidth,still.clientHeight*(o==='p'?9/16:16/9)), out=[];
+    function at(p){ var r=[0,1,2].map(function(k){ return a[k]+(b[k]-a[k])*p; }); r[3]=o==='p'?r[2]*9/16:r[2]; return r; }   /* + the crop's width */
+    var r0=at(.2);
+    for(var i=0;i<=54;i++){
+      var r=at(along(i*.2)), k=shown/r[3];
+      out.push({offset:i/54,transform:'translate('+(k*(r0[0]-r[0])).toFixed(2)+'px,'+(k*(r0[1]-r[1])).toFixed(2)+'px) scale('+(r0[3]/r[3]).toFixed(5)+')'});
+    }
+    return out;
+  }
+  function heroGo(){
+    if(still&&!stillRun&&!calm&&still.animate&&still.naturalWidth){
+      stillRun=still.animate(stillFrames(),{duration:10800,easing:'linear',fill:'forwards'});
+      addEventListener('resize',fitStill); still.addEventListener('load',fitStill);   /* a new size, or the other photograph after a turn */
+    }
+    loadFilm();
+  }
+  function fitStill(){ if(stillRun&&!video.classList.contains('on')&&still.clientWidth&&stillRun.effect&&stillRun.effect.setKeyframes) stillRun.effect.setKeyframes(stillFrames()); }
+  function once(el,name){ return new Promise(function(ok,no){ el.addEventListener(name,ok,{once:true}); el.addEventListener('error',no,{once:true}); }); }
+  function seek(t){ return new Promise(function(ok){ if(t<.04) return ok(); var late=setTimeout(ok,800); video.addEventListener('seeked',function(){ clearTimeout(late); ok(); },{once:true}); video.currentTime=t; }); }
   function loadFilm(){
-    if(!video||calm||!window.fetch||!window.URL) return;
+    if(!video||calm||filmAsked||!window.fetch||!window.URL) return;
+    filmAsked=true;
     /* three copies of the same cut: upright for phones, 1600 wide for small landscape screens, 1920 wide for a
        desktop or laptop screen, where the smaller one was stretched and looked soft */
     var big=matchMedia('(min-width:1100px)').matches&&innerWidth*(window.devicePixelRatio||1)>1700;
     var src=matchMedia('(orientation: portrait)').matches?'/video/hero-p.mp4':big?'/video/hero-xl.mp4':'/video/hero-l.mp4';
     fetch(src).then(function(r){ if(!r.ok) throw new Error('no film'); return r.blob(); })
-      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return video.play(); })
-      .then(function(){ video.classList.add('on'); if(body.dataset.view!=='home') video.pause(); })
+      .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return once(video,'loadedmetadata'); })
+      .then(function(){                                 /* the film takes over at the still's moment */
+        var t=stillRun?Math.min(stillRun.currentTime/1000,4.8):0, held=!!stillRun&&t<4.8;
+        if(held) stillRun.pause();
+        return seek(t).then(function(){ return video.play(); }).then(function(){
+          if(held){ stillRun.currentTime=video.currentTime*1000; stillRun.play(); }
+          video.classList.add('on'); if(body.dataset.view!=='home') video.pause();
+        },function(e){ if(held) stillRun.play(); throw e; });
+      })
       .catch(function(){ /* the still stays up */ });
   }
 
@@ -826,6 +867,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
     $('galPrev').hidden=$('galNext').hidden=s.length<2;
     $('galCap').textContent=s[gi][1]; $('galCount').textContent=s.length<2?'':(gi+1)+' / '+s.length; }
   function setGallery(open){ gal.hidden=!open; body.classList.toggle('locked',open); document.querySelector('.top').style.visibility=open?'hidden':'';
+    behind.forEach(function(el){ if(el) el.inert=open; });                                          /* the page behind takes no focus */
     if(open){ gal.setAttribute('aria-label',set[0]+' images'); showPhoto(0); $('galClose').focus(); } else if(opener){ opener.focus(); } }
   [].forEach.call(document.querySelectorAll('[data-gallery]'),function(b){
     b.addEventListener('click',function(e){ set=SETS[b.getAttribute('data-gallery')]; opener=e.currentTarget; setGallery(true); });
@@ -1136,7 +1178,8 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   }
 
   route();
-  if(document.readyState==='complete') loadFilm(); else addEventListener('load',loadFilm);
+  if(!still||(still.complete&&still.naturalWidth)) heroGo(); else still.addEventListener('load',heroGo,{once:true});
+  if(document.readyState==='complete') loadFilm(); else addEventListener('load',loadFilm);   /* if the still never loads */
 })();
 </script>
 </body>
