@@ -819,14 +819,14 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   addEventListener('resize',function(){ if(menu.classList.contains('open')) aim(); });
   addEventListener('hashchange',route);
 
-  /* hero film: five shots from three projects (build/film46.py, on film45, film44, film42, film41 and film26: North 1st
-     from across the street, the Christian Drive great room and kitchen, the Haidyn trusses from the drone, North 1st on
-     pour day from the drone; the 1920 x 1080 copy for large screens is rendered the same way as build/film34.py). The moon's phase and the two caption lines follow the
+  /* hero film: six shots from four projects (build/film49.py, on film47, film46, film45, film44, film42, film41 and
+     film26: North 1st from across the street, the Christian Drive great room and kitchen, the Haidyn trusses from the
+     drone, North 1st on pour day from the drone, the South Avenue Townhomes rendering; the 1920 x 1080 copy for large screens is rendered the same way as build/film34.py). The moon's phase and the two caption lines follow the
      shot on screen by the film's clock: each shot holds 4.8 s, and the caption turns over in the middle of the dissolve.
      The moon's table is MOON, not PHASE: the scope builder further down owns PHASE, and while the two shared the name
      the moon never moved. */
-  var SHOTS=[['Front elevation','North 1st Street Condominiums'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Roof trusses','Haidyn Residences'],['Pour day','North 1st Street Condominiums']];
-  var MOON=[7,15,24,34,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
+  var SHOTS=[['Front elevation','North 1st Street Condominiums'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Roof trusses','Haidyn Residences'],['Pour day','North 1st Street Condominiums'],['Street front, rendering','South Avenue Townhomes']];
+  var MOON=[7,13,19,25,32,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
   function showShot(i){ if(i===shot||!SHOTS[i]) return; shot=i; $('shotName').textContent=SHOTS[i][0]; $('shotJob').textContent=SHOTS[i][1]; $('moonCut').style.transform='translateX('+MOON[i]+'px)'; }
   if(video) video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
   /* The still under the film moves as the film's first shot moves, from the moment it shows, so that whenever the film
@@ -880,6 +880,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
 
   /* gallery */
   var SETS={
+    southave:['South Avenue Townhomes',[['/img/g-southave-front.webp','Street front, rendering',1],['/img/g-southave-front2.webp','Street front from the other end, rendering',1],['/img/g-southave-rear.webp','Private yards from above, rendering',1]]],
     christian:['Christian Drive Residence',[['/img/front-l.webp','Front elevation'],['/img/great-l.webp','Great room'],['/img/kitchen-l.webp','Kitchen'],['/img/entry-l.webp','Entry and dining'],['/img/rear-l.webp','Covered patio'],['/img/aerial-l.webp','Linda Vista from the air']]],
     haidyn:['Haidyn Residences',[['/img/g-haidyn-framing.webp','Roof trusses going on, November 2026'],['/img/g-haidyn-deck.webp','On the subfloor, November 2026',1],['/img/g-haidyn-foundation.webp','Foundation walls, November 2026']]],
     n1:['North 1st Street Condominiums',[['/img/g-n1-front.webp','The street front, weather barrier on',1],['/img/g-n1-street.webp','Weather barrier on, October 2026'],['/img/g-n1-gap.webp','The gap to the building next door',1],['/img/g-n1-render.webp','Rendering of the finished building',1]]],
