@@ -816,13 +816,13 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   addEventListener('resize',function(){ if(menu.classList.contains('open')) aim(); });
   addEventListener('hashchange',route);
 
-  /* hero film: five shots from three projects (build/film45.py, on film44, film42, film41 and film26: North 1st from
-     across the street, the Christian Drive great room and kitchen, the Haidyn trusses from the drone, the North 1st
-     walkway; the 1920 x 1080 copy for large screens is rendered the same way as build/film34.py). The moon's phase and the two caption lines follow the
+  /* hero film: five shots from three projects (build/film46.py, on film45, film44, film42, film41 and film26: North 1st
+     from across the street, the Christian Drive great room and kitchen, the Haidyn trusses from the drone, North 1st on
+     pour day from the drone; the 1920 x 1080 copy for large screens is rendered the same way as build/film34.py). The moon's phase and the two caption lines follow the
      shot on screen by the film's clock: each shot holds 4.8 s, and the caption turns over in the middle of the dissolve.
      The moon's table is MOON, not PHASE: the scope builder further down owns PHASE, and while the two shared the name
      the moon never moved. */
-  var SHOTS=[['Front elevation','North 1st Street Condominiums'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Roof trusses','Haidyn Residences'],['The side walkway','North 1st Street Condominiums']];
+  var SHOTS=[['Front elevation','North 1st Street Condominiums'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Roof trusses','Haidyn Residences'],['Pour day','North 1st Street Condominiums']];
   var MOON=[7,15,24,34,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
   function showShot(i){ if(i===shot||!SHOTS[i]) return; shot=i; $('shotName').textContent=SHOTS[i][0]; $('shotJob').textContent=SHOTS[i][1]; $('moonCut').style.transform='translateX('+MOON[i]+'px)'; }
   if(video) video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
