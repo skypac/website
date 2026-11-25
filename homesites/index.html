@@ -797,7 +797,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   menu.querySelector('nav').addEventListener('mouseleave',function(){ art(here()); });
   function current(v){ links.forEach(function(a){ if(a.getAttribute('data-tab')===v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); }); }
   addEventListener('pageshow',function(e){                                    /* back to a page the browser kept */
-    if(e.persisted&&video&&video.src&&body.dataset.view==='home') video.play().catch(function(){});
+    if(e.persisted) wake();
     if(!PAGE||!e.persisted) return;
     menu.style.transition='none'; setMenu(false); current(PAGE); void menu.offsetWidth; menu.style.transition='';
   });
@@ -819,7 +819,7 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   var SHOTS=[['Front elevation','North 1st Street Condominiums'],['Great room','Christian Drive Residence'],['Kitchen','Christian Drive Residence'],['Roof trusses','Haidyn Residences'],['Pour day','North 1st Street Condominiums'],['Street front, rendering','South Avenue Townhomes']];
   var MOON=[7,13,19,25,32,48], STEP=4.8, LOOP=STEP*SHOTS.length, shot=-1;
   function showShot(i){ if(i===shot||!SHOTS[i]) return; shot=i; $('shotName').textContent=SHOTS[i][0]; $('shotJob').textContent=SHOTS[i][1]; $('moonCut').style.transform='translateX('+MOON[i]+'px)'; }
-  if(video) video.addEventListener('timeupdate',function(){ showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });
+  if(video) video.addEventListener('timeupdate',function(){ if(video.classList.contains('on')) showShot(Math.floor(((video.currentTime+.6)%LOOP)/STEP)%SHOTS.length); });   /* only while the film shows: over the still the caption stays on the still (round 52) */
   /* The still under the film moves as the film's first shot moves, from the moment it shows, so that whenever the film
      arrives it can take over without a jump (round 48; before, the still sat almost motionless under the openers' slow
      CSS drift and the film faded in at another scale). The film's first frame is shot 1 a fifth of the way along its
@@ -849,24 +849,48 @@ sup{font-size:.66em;line-height:0;color:var(--gold-lt);font-weight:400;margin-le
   }
   function fitStill(){ if(stillRun&&!video.classList.contains('on')&&still.clientWidth&&stillRun.effect&&stillRun.effect.setKeyframes) stillRun.effect.setKeyframes(stillFrames()); }
   function seek(t){ return new Promise(function(ok){ if(t<.04) return ok(); var late=setTimeout(ok,800); video.addEventListener('seeked',function(){ clearTimeout(late); ok(); },{once:true}); video.currentTime=t; }); }
+  var filmBusy=false, wakeAgain=false;                 /* busy: from the film's fetch until it shows or fails */
+  function fadeIn(){                                    /* playing but not yet shown: set it to the still's moment, then fade it in */
+    var t=stillRun?Math.min(stillRun.currentTime/1000,4.8):0, held=!!stillRun&&t<4.8;
+    if(held) stillRun.pause();
+    return seek(t).then(function(){
+      if(held){ stillRun.currentTime=video.currentTime*1000; stillRun.play(); }
+      video.classList.add('on'); if(body.dataset.view!=='home'||document.hidden) video.pause();
+      settled();
+    });
+  }
+  function failed(){ if(stillRun&&stillRun.playState==='paused') stillRun.play(); settled(); }   /* the still stays up */
+  function settled(){ filmBusy=false; if(wakeAgain){ wakeAgain=false; wake(); } }
+  /* Back from another app or tab (round 52). Coming back to the page on an iPhone, the film could stand still for a
+     while as the caption ran on: the phone can keep a film running behind a picture it no longer draws, which a seek
+     brings back (WebKit bug 187445), and it may refuse to start a film while the page is out of sight. So the film is
+     held while the page is hidden, and on the way back it is played and, in WebKit (Safari, and every browser on an
+     iPhone), sought a millisecond back from where it stands (WebKit skips a seek to the very same time), which draws
+     it again. Other browsers draw it anyway, and there a seek would only hold the desktop film while it decodes from
+     its last key frame. A film that was interrupted before it came in comes in now, as on a first visit. */
+  var WEBKIT=!!video&&typeof video.webkitSetPresentationMode==='function';
+  function wake(){
+    if(!video||!video.src||document.hidden||body.dataset.view!=='home') return;
+    if(filmBusy){ wakeAgain=true; return; }
+    if(!video.classList.contains('on')){ filmBusy=true; video.play().then(fadeIn).catch(failed); return; }
+    function redraw(){ if(!WEBKIT) return; var t=video.currentTime; video.currentTime=t>.01?t-.001:t+.001; }
+    if(!video.paused) return redraw();
+    video.addEventListener('playing',redraw,{once:true});
+    video.play().catch(function(){ video.removeEventListener('playing',redraw); redraw(); });
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden) wake(); else if(video&&video.classList.contains('on')) video.pause();
+  });
   function loadFilm(){
     if(!video||calm||filmAsked||!window.fetch||!window.URL) return;
-    filmAsked=true;
+    filmAsked=filmBusy=true;
     /* three copies of the same cut: upright for phones, 1600 wide for small landscape screens, 1920 wide for a
        desktop or laptop screen, where the smaller one was stretched and looked soft */
     var big=matchMedia('(min-width:1100px)').matches&&innerWidth*(window.devicePixelRatio||1)>1700;
     var src=matchMedia('(orientation: portrait)').matches?'/video/hero-p.mp4':big?'/video/hero-xl.mp4':'/video/hero-l.mp4';
     fetch(src).then(function(r){ if(!r.ok) throw new Error('no film'); return r.blob(); })
       .then(function(b){ video.src=URL.createObjectURL(new Blob([b],{type:'/video/mp4'})); return video.play(); })   /* an iPhone loads nothing until play() */
-      .then(function(){                                 /* playing but not yet shown: set it to the still's moment, then fade it in */
-        var t=stillRun?Math.min(stillRun.currentTime/1000,4.8):0, held=!!stillRun&&t<4.8;
-        if(held) stillRun.pause();
-        return seek(t).then(function(){
-          if(held){ stillRun.currentTime=video.currentTime*1000; stillRun.play(); }
-          video.classList.add('on'); if(body.dataset.view!=='home') video.pause();
-        });
-      })
-      .catch(function(){ if(stillRun&&stillRun.playState==='paused') stillRun.play(); /* the still stays up */ });
+      .then(fadeIn).catch(failed);
   }
 
   /* gallery */
